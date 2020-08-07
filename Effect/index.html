@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ComposableArchitecture - Effect</title>
+    <link rel="stylesheet" type="text/css" href="/reactiveswift-composable-architecture/all.css" media="all" />
+</head>
+<body>
+    <header>
+        <a href="/reactiveswift-composable-architecture/">
+            <strong>
+                ComposableArchitecture
+            </strong>
+            <span>Documentation</span>
+        </a>
+        <sup>Beta</sup>
+    </header>
+
+    <!--
+    <form class="search">
+        <input type="search" placeholder="Search" />
+    </form>
+    -->
+
+    <nav>
+        <div class="wrapper">
+            <h2>On This Page</h2>
+            <ol/>
+        </div>
+    </nav>
+
+    <main>
+        <article>
+            <h1>
+    <small>Typealias</small>
+    <span class="name">Effect</span>
+</h1>
+
+<html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">typealias</span> <span class="variable">Effect</span>&lt;<span class="variable">Value</span>, <span class="variable">Error</span>: <span class="type">Swift</span>.<span class="type">Error</span>&gt; = <span class="type">SignalProducer</span>&lt;<span class="type">Value</span>, <span class="type">Error</span>&gt;</code></pre></body></html>
+<div class="summary" role="doc-abstract">
+    <p>The <code>Effect</code> type encapsulates a unit of work that can be run in the outside world, and can feed
+data back to the <code>Store</code>. It is the perfect place to do side effects, such as network requests,
+saving/loading from disk, creating timers, interacting with dependencies, and more.</p>
+
+</div>
+<div class="discussion">
+    <p>Effects are returned from reducers so that the <code>Store</code> can perform the effects after the reducer
+is done running. It is important to note that <code>Store</code> is not thread safe, and so all effects
+must receive values on the same thread, <strong>and</strong> if the store is being used to drive UI then it
+must receive values on the main thread.</p>
+
+<p>An effect is simply a typealias for a ReactiveSwift <code>SignalProducer</code></p>
+
+</div>
+        </article>
+    </main>
+
+    <footer>
+        <p>
+    Generated on <time datetime="2020-08-07T18:28:22+0000">August 7, 2020</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.4</span>.
+</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ComposableArchitecture - AlertState.Button</title>
+    <link rel="stylesheet" type="text/css" href="/reactiveswift-composable-architecture/all.css" media="all" />
+</head>
+<body>
+    <header>
+        <a href="/reactiveswift-composable-architecture/">
+            <strong>
+                ComposableArchitecture
+            </strong>
+            <span>Documentation</span>
+        </a>
+        <sup>Beta</sup>
+    </header>
+
+    <!--
+    <form class="search">
+        <input type="search" placeholder="Search" />
+    </form>
+    -->
+
+    <nav>
+        <div class="wrapper">
+            <h2>On This Page</h2>
+            <ol><li><a href="#relationships">Relationships</a><ul><li><a href="#relationships">Member Of</a></li><li><a href="#relationships">Nested Types</a></li></ul></li><li><a href="#properties">Properties</a><ul><li class="variable"><a href="#alertstate.button.action">action</a></li><li class="variable"><a href="#alertstate.button.type">type</a></li></ul></li><li><a href="#methods">Methods</a><ul><li class="function"><a href="#alertstate.button.cancel(_:send:)">cancel(_:​send:​)</a></li><li class="function"><a href="#alertstate.button.cancel(send:)">cancel(send:​)</a></li><li class="function"><a href="#alertstate.button.`default`(_:send:)">`default`(_:​send:​)</a></li><li class="function"><a href="#alertstate.button.destructive(_:send:)">destructive(_:​send:​)</a></li></ul></li></ol>
+        </div>
+    </nav>
+
+    <main>
+        <article>
+            <h1>
+    <small>Structure</small>
+    <code class="name">Alert​State.​Button</code>
+</h1>
+
+<html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">struct</span> <span class="type">Button</span></code></pre></body></html>
+<section id="relationships">
+    <h2 hidden>Relationships</h2>
+        
+        <h3>Member Of</h3>
+<dl>
+    <dt class="structure"><code><a href="/reactiveswift-composable-architecture/AlertState">AlertState</a></code></dt>
+<dd><p>A data type that describes the state of an alert that can be shown to the user. The <code>Action</code>
+generic is the type of actions that can be sent from tapping on a button in the alert.</p>
+</dd>
+</dl>
+<h3>Nested Types</h3>
+<dl>
+    <dt class="enumeration"><code><a href="/reactiveswift-composable-architecture/AlertState_Button_%60Type%60">AlertState.Button.`Type`</a></code></dt>
+<dd></dd>
+</dl>
+</section>
+    <section id="properties">
+        <h2>Properties</h2>
+
+        <div role="article" class="variable" id="alertstate.button.action">
+    <h3>
+        <code>action</code>
+    </h3>
+    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">action</span>: <span class="type">Action</span>?</code></pre></body></html>
+</div>
+<div role="article" class="variable" id="alertstate.button.type">
+    <h3>
+        <code>type</code>
+    </h3>
+    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">type</span>: <span class="type">`Type`</span></code></pre></body></html>
+</div>
+    </section>
+    <section id="methods">
+        <h2>Methods</h2>
+
+        <div role="article" class="function" id="alertstate.button.cancel(_:send:)">
+    <h3>
+        <code>cancel(_:​send:​)</code>
+    </h3>
+    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">cancel</span>(<span class="keyword">_</span> <span class="variable">label</span>: <span class="type">String</span>, <span class="variable">send</span> <span class="variable">action</span>: <span class="type">Action</span>? = <span class="keyword">nil</span>) -&gt; <span class="keyword">Self</span></code></pre></body></html>
+</div>
+<div role="article" class="function" id="alertstate.button.cancel(send:)">
+    <h3>
+        <code>cancel(send:​)</code>
+    </h3>
+    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">cancel</span>(<span class="variable">send</span> <span class="variable">action</span>: <span class="type">Action</span>? = <span class="keyword">nil</span>) -&gt; <span class="keyword">Self</span></code></pre></body></html>
+</div>
+<div role="article" class="function" id="alertstate.button.`default`(_:send:)">
+    <h3>
+        <code>`default`(_:​send:​)</code>
+    </h3>
+    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">`default`</span>(<span class="keyword">_</span> <span class="variable">label</span>: <span class="type">String</span>, <span class="variable">send</span> <span class="variable">action</span>: <span class="type">Action</span>? = <span class="keyword">nil</span>) -&gt; <span class="keyword">Self</span></code></pre></body></html>
+</div>
+<div role="article" class="function" id="alertstate.button.destructive(_:send:)">
+    <h3>
+        <code>destructive(_:​send:​)</code>
+    </h3>
+    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">destructive</span>(<span class="keyword">_</span> <span class="variable">label</span>: <span class="type">String</span>, <span class="variable">send</span> <span class="variable">action</span>: <span class="type">Action</span>? = <span class="keyword">nil</span>) -&gt; <span class="keyword">Self</span></code></pre></body></html>
+</div>
+    </section>
+
+
+
+        </article>
+    </main>
+
+    <footer>
+        <p>
+    Generated on <time datetime="2020-08-07T18:28:22+0000">August 7, 2020</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.4</span>.
+</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ComposableArchitecture - ActionSheetState</title>
+    <link rel="stylesheet" type="text/css" href="/reactiveswift-composable-architecture/all.css" media="all" />
+</head>
+<body>
+    <header>
+        <a href="/reactiveswift-composable-architecture/">
+            <strong>
+                ComposableArchitecture
+            </strong>
+            <span>Documentation</span>
+        </a>
+        <sup>Beta</sup>
+    </header>
+
+    <!--
+    <form class="search">
+        <input type="search" placeholder="Search" />
+    </form>
+    -->
+
+    <nav>
+        <div class="wrapper">
+            <h2>On This Page</h2>
+            <ol><li><a href="#relationships">Relationships</a><ul><li><a href="#relationships">Conforms To</a></li></ul></li><li><a href="#nested type aliases">Nested Type Aliases</a><ul><li class="typealias"><a href="#actionsheetstate.button">Button</a></li></ul></li><li><a href="#initializers">Initializers</a><ul><li class="initializer"><a href="#actionsheetstate.init(title:message:buttons:)">init(title:​message:​buttons:​)</a></li></ul></li><li><a href="#properties">Properties</a><ul><li class="variable"><a href="#actionsheetstate.buttons">buttons</a></li><li class="variable"><a href="#actionsheetstate.message">message</a></li><li class="variable"><a href="#actionsheetstate.title">title</a></li></ul></li></ol>
+        </div>
+    </nav>
+
+    <main>
+        <article>
+            <h1>
+    <small>Structure</small>
+    <code class="name">Action​Sheet​State</code>
+</h1>
+
+<html><body><pre class="highlight"><code><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">iOS</span> <span class="number literal">13</span>, *) <span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macCatalyst</span> <span class="number literal">13</span>, *) <span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">10.15</span>, *) <span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">tvOS</span> <span class="number literal">13</span>, *) <span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">watchOS</span> <span class="number literal">6</span>, *) <span class="keyword">public</span> <span class="keyword">struct</span> <span class="type">ActionSheetState</span>&lt;<span class="variable">Action</span>&gt;</code></pre></body></html>
+<div class="summary" role="doc-abstract">
+    <p>A data type that describes the state of an action sheet that can be shown to the user. The
+<code>Action</code> generic is the type of actions that can be sent from tapping on a button in the sheet.</p>
+
+</div>
+<div class="discussion">
+    <p>This type can be used in your application's state in order to control the presentation or
+dismissal of action sheets. It is preferrable to use this API instead of the default SwiftUI API
+for action sheets because SwiftUI uses 2-way bindings in order to control the showing and
+dismissal of sheets, and that does not play nicely with the Composable Architecture. The library
+requires that all state mutations happen by sending an action so that a reducer can handle that
+logic, which greatly simplifies how data flows through your application, and gives you instant
+testability on all parts of your application.</p>
+
+<p>To use this API, you model all the action sheet actions in your domain's action enum:</p>
+
+<html><body><pre class="highlight"><code><span class="keyword">enum</span> <span class="type">AppAction</span>: <span class="type">Equatable</span> {
+  <span class="keyword">case</span> <span class="variable">cancelTapped</span>
+  <span class="keyword">case</span> <span class="variable">deleteTapped</span>
+  <span class="keyword">case</span> <span class="variable">favoriteTapped</span>
+  <span class="keyword">case</span> <span class="variable">infoTapped</span>
+
+  <span class="comment">// Your other actions</span>
+}
+</code></pre></body></html>
+<p>And you model the state for showing the action sheet in your domain's state, and it can start
+off in a <code>nil</code> state:</p>
+
+<html><body><pre class="highlight"><code><span class="keyword">struct</span> <span class="type">AppState</span>: <span class="type">Equatable</span> {
+  <span class="keyword">var</span> <span class="variable">actionSheet</span>: <span class="type">ActionSheetState</span>&lt;<span class="type">AppAction</span>&gt;?
+
+  <span class="comment">// Your other state</span>
+}
+</code></pre></body></html>
+<p>Then, in the reducer you can construct an <code>ActionSheetState</code> value to represent the action
+sheet you want to show to the user:</p>
+
+<html><body><pre class="highlight"><code><span class="keyword">let</span> <span class="variable">appReducer</span> = <span class="variable">Reducer</span>&lt;<span class="type">AppState</span>, <span class="type">AppAction</span>, <span class="type">AppEnvironment</span>&gt; { <span class="variable">state</span>, <span class="variable">action</span>, <span class="variable">env</span> <span class="keyword">in</span>
+  <span class="keyword">switch</span> <span class="variable">action</span>
+    <span class="keyword">case</span> .<span class="variable">cancelTapped</span>:
+      <span class="type">state</span>.<span class="type">actionSheet</span> = <span class="keyword">nil</span>
+      <span class="keyword">return</span> .<span class="variable">none</span>
+
+    <span class="keyword">case</span> .<span class="variable">deleteTapped</span>:
+      <span class="type">state</span>.<span class="type">actionSheet</span> = <span class="keyword">nil</span>
+      <span class="comment">// Do deletion logic...</span>
+
+    <span class="keyword">case</span> .<span class="variable">favoriteTapped</span>:
+      <span class="type">state</span>.<span class="type">actionSheet</span> = <span class="keyword">nil</span>
+      <span class="comment">// Do favoriting logic</span>
+
+    <span class="keyword">case</span> .<span class="variable">infoTapped</span>:
+      <span class="type">state</span>.<span class="type">actionSheet</span> = .<span class="keyword">init</span>(
+        <span class="variable">title</span>: <span class="string literal">"What would you like to do?"</span>,
+        <span class="variable">buttons</span>: [
+          .<span class="keyword">default</span>(<span class="string literal">"Favorite"</span>, <span class="variable">send</span>: .<span class="variable">favoriteTapped</span>),
+          .<span class="variable">destructive</span>(<span class="string literal">"Delete"</span>, <span class="variable">send</span>: .<span class="variable">deleteTapped</span>),
+          .<span class="variable">cancel</span>(),
+        ]
+      )
+    <span class="keyword">return</span> .<span class="variable">none</span>
+  }
+}
+</code></pre></body></html>
+<p>And then, in your view you can use the <code>.actionSheet(_:send:dismiss:)</code> method on <code>View</code> in order
+to present the action sheet in a way that works best with the Composable Architecture:</p>
+
+<html><body><pre class="highlight"><code><span class="variable">Button</span>(<span class="string literal">"</span><span class="string literal">Info</span><span class="string literal">"</span>) { <span class="variable">viewStore</span>.<span class="type">send</span>(.<span class="variable">infoTapped</span>) }
+  .<span class="type">actionSheet</span>(
+    <span class="keyword">self</span>.<span class="type">store</span>.<span class="type">scope</span>(<span class="variable">state</span>: \.<span class="type">actionSheet</span>),
+    <span class="variable">dismiss</span>: .<span class="variable">cancelTapped</span>
+  )
+</code></pre></body></html>
+<p>This makes your reducer in complete control of when the action sheet is shown or dismissed, and
+makes it so that any choice made in the action sheet is automatically fed back into the reducer
+so that you can handle its logic.</p>
+
+<p>Even better, you can instantly write tests that your action sheet behavior works as expected:</p>
+
+<html><body><pre class="highlight"><code><span class="keyword">let</span> <span class="variable">store</span> = <span class="variable">TestStore</span>(
+  <span class="variable">initialState</span>: <span class="type">AppState</span>(),
+  <span class="variable">reducer</span>: <span class="type">appReducer</span>,
+  <span class="variable">environment</span>: .<span class="variable">mock</span>
+)
+
+<span class="variable">store</span>.<span class="type">assert</span>(
+  .<span class="variable">send</span>(.<span class="variable">infoTapped</span>) {
+    <span class="variable">$0</span>.<span class="type">actionSheet</span> = .<span class="variable">init</span>(
+      <span class="variable">title</span>: <span class="string literal">"</span><span class="string literal">What would you like to do?</span><span class="string literal">"</span>,
+      <span class="variable">buttons</span>: [
+        .<span class="variable">default</span>(<span class="string literal">"</span><span class="string literal">Favorite</span><span class="string literal">"</span>, <span class="variable">send</span>: .<span class="variable">favoriteTapped</span>),
+        .<span class="variable">destructive</span>(<span class="string literal">"</span><span class="string literal">Delete</span><span class="string literal">"</span>, <span class="variable">send</span>: .<span class="variable">deleteTapped</span>),
+        .<span class="variable">cancel</span>(),
+      ]
+    )
+  },
+  .<span class="variable">send</span>(.<span class="variable">favoriteTapped</span>) {
+    <span class="variable">$0</span>.<span class="type">actionSheet</span> = <span class="keyword">nil</span>
+    <span class="comment">// Also verify that favoriting logic executed correctly</span>
+  }
+)
+</code></pre></body></html>
+</div>
+<section id="relationships">
+    <h2 hidden>Relationships</h2>
+        
+        <h3>Conforms To</h3>
+<dl>
+    <dt class="unknown"><code>Identifiable</code></dt>
+</dl>
+</section>
+    <section id="nested type aliases">
+        <h2>Nested Type Aliases</h2>
+
+        <div role="article" class="typealias" id="actionsheetstate.button">
+    <h3>
+        <code>Button</code>
+    </h3>
+    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">typealias</span> <span class="variable">Button</span> = <a href="/reactiveswift-composable-architecture/AlertState"><span class="type">AlertState</span></a>&lt;<span class="type">Action</span>&gt;.<span class="type">Button</span></code></pre></body></html>
+</div>
+    </section>
+    <section id="initializers">
+        <h2>Initializers</h2>
+
+        <div role="article" class="initializer" id="actionsheetstate.init(title:message:buttons:)">
+    <h3>
+        <code>init(title:​message:​buttons:​)</code>
+    </h3>
+    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">init</span>(<span class="variable">title</span>: <span class="type">String</span>, <span class="variable">message</span>: <span class="type">String</span>? = <span class="keyword">nil</span>, <span class="variable">buttons</span>: [<span class="type">Button</span>])</code></pre></body></html>
+</div>
+    </section>
+    <section id="properties">
+        <h2>Properties</h2>
+
+        <div role="article" class="variable" id="actionsheetstate.buttons">
+    <h3>
+        <code>buttons</code>
+    </h3>
+    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">buttons</span>: [<span class="type">Button</span>]</code></pre></body></html>
+</div>
+<div role="article" class="variable" id="actionsheetstate.message">
+    <h3>
+        <code>message</code>
+    </h3>
+    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">message</span>: <span class="type">String</span>?</code></pre></body></html>
+</div>
+<div role="article" class="variable" id="actionsheetstate.title">
+    <h3>
+        <code>title</code>
+    </h3>
+    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">title</span>: <span class="type">String</span></code></pre></body></html>
+</div>
+    </section>
+
+
+
+        </article>
+    </main>
+
+    <footer>
+        <p>
+    Generated on <time datetime="2020-08-07T18:28:22+0000">August 7, 2020</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.4</span>.
+</p>
+    </footer>
+</body>
+</html>

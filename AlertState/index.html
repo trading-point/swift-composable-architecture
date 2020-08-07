@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ComposableArchitecture - AlertState</title>
+    <link rel="stylesheet" type="text/css" href="/reactiveswift-composable-architecture/all.css" media="all" />
+</head>
+<body>
+    <header>
+        <a href="/reactiveswift-composable-architecture/">
+            <strong>
+                ComposableArchitecture
+            </strong>
+            <span>Documentation</span>
+        </a>
+        <sup>Beta</sup>
+    </header>
+
+    <!--
+    <form class="search">
+        <input type="search" placeholder="Search" />
+    </form>
+    -->
+
+    <nav>
+        <div class="wrapper">
+            <h2>On This Page</h2>
+            <ol><li><a href="#relationships">Relationships</a><ul><li><a href="#relationships">Nested Types</a></li><li><a href="#relationships">Conforms To</a></li></ul></li><li><a href="#initializers">Initializers</a><ul><li class="initializer"><a href="#alertstate.init(title:message:dismissbutton:)">init(title:​message:​dismiss​Button:​)</a></li><li class="initializer"><a href="#alertstate.init(title:message:primarybutton:secondarybutton:)">init(title:​message:​primary​Button:​secondary​Button:​)</a></li></ul></li><li><a href="#properties">Properties</a><ul><li class="variable"><a href="#alertstate.message">message</a></li><li class="variable"><a href="#alertstate.primarybutton">primary​Button</a></li><li class="variable"><a href="#alertstate.secondarybutton">secondary​Button</a></li><li class="variable"><a href="#alertstate.title">title</a></li></ul></li></ol>
+        </div>
+    </nav>
+
+    <main>
+        <article>
+            <h1>
+    <small>Structure</small>
+    <code class="name">Alert​State</code>
+</h1>
+
+<html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">struct</span> <span class="type">AlertState</span>&lt;<span class="variable">Action</span>&gt;</code></pre></body></html>
+<div class="summary" role="doc-abstract">
+    <p>A data type that describes the state of an alert that can be shown to the user. The <code>Action</code>
+generic is the type of actions that can be sent from tapping on a button in the alert.</p>
+
+</div>
+<div class="discussion">
+    <p>This type can be used in your application's state in order to control the presentation or
+dismissal of alerts. It is preferrable to use this API instead of the default SwiftUI API
+for alerts because SwiftUI uses 2-way bindings in order to control the showing and dismissal
+of alerts, and that does not play nicely with the Composable Architecture. The library requires
+that all state mutations happen by sending an action so that a reducer can handle that logic,
+which greatly simplifies how data flows through your application, and gives you instant
+testability on all parts of your application.</p>
+
+<p>To use this API, you model all the alert actions in your domain's action enum:</p>
+
+<html><body><pre class="highlight"><code><span class="keyword">enum</span> <span class="type">AppAction</span>: <span class="type">Equatable</span> {
+  <span class="keyword">case</span> <span class="variable">cancelTapped</span>
+  <span class="keyword">case</span> <span class="variable">confirmTapped</span>
+  <span class="keyword">case</span> <span class="variable">deleteTapped</span>
+
+  <span class="comment">// Your other actions</span>
+}
+</code></pre></body></html>
+<p>And you model the state for showing the alert in your domain's state, and it can start off
+<code>nil</code>:</p>
+
+<html><body><pre class="highlight"><code><span class="keyword">struct</span> <span class="type">AppState</span>: <span class="type">Equatable</span> {
+  <span class="keyword">var</span> <span class="variable">alert</span> = <span class="variable">AlertState</span>&lt;<span class="type">AppAction</span>&gt;?
+
+  <span class="comment">// Your other state</span>
+}
+</code></pre></body></html>
+<p>Then, in the reducer you can construct an <code>AlertState</code> value to represent the alert you want
+to show to the user:</p>
+
+<html><body><pre class="highlight"><code><span class="keyword">let</span> <span class="variable">appReducer</span> = <span class="variable">Reducer</span>&lt;<span class="type">AppState</span>, <span class="type">AppAction</span>, <span class="type">AppEnvironment</span>&gt; { <span class="variable">state</span>, <span class="variable">action</span>, <span class="variable">env</span> <span class="keyword">in</span>
+  <span class="keyword">switch</span> <span class="variable">action</span>
+    <span class="keyword">case</span> .<span class="variable">cancelTapped</span>:
+      <span class="type">state</span>.<span class="type">alert</span> = <span class="keyword">nil</span>
+      <span class="keyword">return</span> .<span class="variable">none</span>
+
+    <span class="keyword">case</span> .<span class="variable">confirmTapped</span>:
+      <span class="type">state</span>.<span class="type">alert</span> = <span class="keyword">nil</span>
+      <span class="comment">// Do deletion logic...</span>
+
+    <span class="keyword">case</span> .<span class="variable">deleteTapped</span>:
+      <span class="type">state</span>.<span class="type">alert</span> = .<span class="keyword">init</span>(
+        <span class="variable">title</span>: <span class="string literal">"Delete"</span>,
+        <span class="variable">message</span>: <span class="string literal">"Are you sure you want to delete this? It cannot be undone."</span>,
+        <span class="variable">primaryButton</span>: .<span class="keyword">default</span>(<span class="string literal">"Confirm"</span>, <span class="variable">send</span>: .<span class="variable">confirmTapped</span>),
+        <span class="variable">secondaryButton</span>: .<span class="variable">cancel</span>()
+      )
+    <span class="keyword">return</span> .<span class="variable">none</span>
+  }
+}
+</code></pre></body></html>
+<p>And then, in your view you can use the <code>.alert(_:send:dismiss:)</code> method on <code>View</code> in order
+to present the alert in a way that works best with the Composable Architecture:</p>
+
+<html><body><pre class="highlight"><code><span class="variable">Button</span>(<span class="string literal">"</span><span class="string literal">Delete</span><span class="string literal">"</span>) { <span class="variable">viewStore</span>.<span class="type">send</span>(.<span class="variable">deleteTapped</span>) }
+  .<span class="type">alert</span>(
+    <span class="keyword">self</span>.<span class="type">store</span>.<span class="type">scope</span>(<span class="variable">state</span>: \.<span class="type">alert</span>),
+    <span class="variable">dismiss</span>: .<span class="variable">cancelTapped</span>
+  )
+</code></pre></body></html>
+<p>This makes your reducer in complete control of when the alert is shown or dismissed, and makes
+it so that any choice made in the alert is automatically fed back into the reducer so that you
+can handle its logic.</p>
+
+<p>Even better, you can instantly write tests that your alert behavior works as expected:</p>
+
+<html><body><pre class="highlight"><code><span class="keyword">let</span> <span class="variable">store</span> = <span class="variable">TestStore</span>(
+  <span class="variable">initialState</span>: <span class="type">AppState</span>(),
+  <span class="variable">reducer</span>: <span class="type">appReducer</span>,
+  <span class="variable">environment</span>: .<span class="variable">mock</span>
+)
+
+<span class="variable">store</span>.<span class="type">assert</span>(
+  .<span class="variable">send</span>(.<span class="variable">deleteTapped</span>) {
+    <span class="variable">$0</span>.<span class="type">alert</span> = .<span class="variable">init</span>(
+      <span class="variable">title</span>: <span class="string literal">"</span><span class="string literal">Delete</span><span class="string literal">"</span>,
+      <span class="variable">message</span>: <span class="string literal">"</span><span class="string literal">Are you sure you want to delete this? It cannot be undone.</span><span class="string literal">"</span>,
+      <span class="variable">primaryButton</span>: .<span class="variable">default</span>(<span class="string literal">"</span><span class="string literal">Confirm</span><span class="string literal">"</span>, <span class="variable">send</span>: .<span class="variable">confirmTapped</span>),
+      <span class="variable">secondaryButton</span>: .<span class="variable">cancel</span>(<span class="variable">send</span>: .<span class="variable">cancelTapped</span>)
+    )
+  },
+  .<span class="variable">send</span>(.<span class="variable">deleteTapped</span>) {
+    <span class="variable">$0</span>.<span class="type">alert</span> = <span class="keyword">nil</span>
+    <span class="comment">// Also verify that delete logic executed correctly</span>
+  }
+)
+</code></pre></body></html>
+</div>
+<section id="relationships">
+    <h2 hidden>Relationships</h2>
+        
+        <h3>Nested Types</h3>
+<dl>
+    <dt class="structure"><code><a href="/reactiveswift-composable-architecture/AlertState_Button">AlertState.Button</a></code></dt>
+<dd></dd>
+</dl>
+<h3>Conforms To</h3>
+<dl>
+    <dt class="unknown"><code>Identifiable</code></dt>
+</dl>
+</section>
+    <section id="initializers">
+        <h2>Initializers</h2>
+
+        <div role="article" class="initializer" id="alertstate.init(title:message:dismissbutton:)">
+    <h3>
+        <code>init(title:​message:​dismiss​Button:​)</code>
+    </h3>
+    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">init</span>(<span class="variable">title</span>: <span class="type">String</span>, <span class="variable">message</span>: <span class="type">String</span>? = <span class="keyword">nil</span>, <span class="variable">dismissButton</span>: <span class="type">Button</span>? = <span class="keyword">nil</span>)</code></pre></body></html>
+</div>
+<div role="article" class="initializer" id="alertstate.init(title:message:primarybutton:secondarybutton:)">
+    <h3>
+        <code>init(title:​message:​primary​Button:​secondary​Button:​)</code>
+    </h3>
+    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">init</span>(<span class="variable">title</span>: <span class="type">String</span>, <span class="variable">message</span>: <span class="type">String</span>? = <span class="keyword">nil</span>, <span class="variable">primaryButton</span>: <span class="type">Button</span>, <span class="variable">secondaryButton</span>: <span class="type">Button</span>)</code></pre></body></html>
+</div>
+    </section>
+    <section id="properties">
+        <h2>Properties</h2>
+
+        <div role="article" class="variable" id="alertstate.message">
+    <h3>
+        <code>message</code>
+    </h3>
+    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">message</span>: <span class="type">String</span>?</code></pre></body></html>
+</div>
+<div role="article" class="variable" id="alertstate.primarybutton">
+    <h3>
+        <code>primary​Button</code>
+    </h3>
+    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">primaryButton</span>: <span class="type">Button</span>?</code></pre></body></html>
+</div>
+<div role="article" class="variable" id="alertstate.secondarybutton">
+    <h3>
+        <code>secondary​Button</code>
+    </h3>
+    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">secondaryButton</span>: <span class="type">Button</span>?</code></pre></body></html>
+</div>
+<div role="article" class="variable" id="alertstate.title">
+    <h3>
+        <code>title</code>
+    </h3>
+    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">title</span>: <span class="type">String</span></code></pre></body></html>
+</div>
+    </section>
+
+
+
+        </article>
+    </main>
+
+    <footer>
+        <p>
+    Generated on <time datetime="2020-08-07T18:28:22+0000">August 7, 2020</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.4</span>.
+</p>
+    </footer>
+</body>
+</html>
