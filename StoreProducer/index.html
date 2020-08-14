@@ -26,49 +26,26 @@
     <nav>
         <div class="wrapper">
             <h2>On This Page</h2>
-            <ol><li><a href="#relationships">Relationships</a><ul><li><a href="#relationships">Conforms To</a></li></ul></li><li><a href="#properties">Properties</a><ul><li class="variable"><a href="#storeproducer.producer">producer</a></li></ul></li></ol>
+            <ol/>
         </div>
     </nav>
 
     <main>
         <article>
             <h1>
-    <small>Structure</small>
-    <code class="name">Store​Producer</code>
+    <small>Typealias</small>
+    <span class="name">Store​Producer</span>
 </h1>
 
-<html><body><pre class="highlight"><code><span class="attribute">@</span><span class="attribute">dynamicMemberLookup</span> <span class="keyword">public</span> <span class="keyword">struct</span> <span class="type">StoreProducer</span>&lt;<span class="variable">State</span>&gt;: <span class="type">SignalProducerConvertible</span></code></pre></body></html>
-<div class="summary" role="doc-abstract">
-    <p>A producer of store state.</p>
-
-</div>
-<section id="relationships">
-    <h2 hidden>Relationships</h2>
-        
-        <h3>Conforms To</h3>
-<dl>
-    <dt class="unknown"><code>SignalProducerConvertible</code></dt>
-</dl>
-</section>
-    <section id="properties">
-        <h2>Properties</h2>
-
-        <div role="article" class="variable" id="storeproducer.producer">
-    <h3>
-        <code>producer</code>
-    </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">let</span> <span class="variable">producer</span>: <a href="/reactiveswift-composable-architecture/Effect"><span class="type">Effect</span></a>&lt;<span class="type">State</span>, <span class="type">Never</span>&gt;</code></pre></body></html>
-</div>
-    </section>
-
-
-
+<html><body><pre class="highlight"><code><span class="attribute">@</span><span class="attribute">available</span>(*, <span class="variable">deprecated</span>, <span class="variable">message</span>: <span class="string literal">"""
+Consider using `Produced&lt;State&gt;` instead, this typealias is added for backward compatibility and will be removed in the next major release.
+"""</span>) <span class="keyword">public</span> <span class="keyword">typealias</span> <span class="variable">StoreProducer</span>&lt;<span class="variable">State</span>&gt; = <a href="/reactiveswift-composable-architecture/Produced"><span class="type">Produced</span></a>&lt;<span class="type">State</span>&gt;</code></pre></body></html>
         </article>
     </main>
 
     <footer>
         <p>
-    Generated on <time datetime="2020-08-07T18:28:22+0000">August 7, 2020</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.4</span>.
+    Generated on <time datetime="2020-08-14T09:28:00+0000">August 14, 2020</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.4</span>.
 </p>
     </footer>
 </body>

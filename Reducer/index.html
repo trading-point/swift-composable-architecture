@@ -295,7 +295,7 @@ no effect needs to be executed, a <code>.none</code> effect can be returned.</p>
     <h3>
         <code>signpost(_:​log:​)</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">signpost</span>(<span class="keyword">_</span> <span class="variable">prefix</span>: <span class="type">String</span> = <span class="string literal">"</span><span class="string literal"/><span class="string literal">"</span>, <span class="variable">log</span>: <span class="type">OSLog</span> = <span class="variable">OSLog</span>(
+    <html><body><pre class="highlight"><code><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">iOS</span> <span class="number literal">12.0</span>, *) <span class="keyword">public</span> <span class="keyword">func</span> <span class="function">signpost</span>(<span class="keyword">_</span> <span class="variable">prefix</span>: <span class="type">String</span> = <span class="string literal">"</span><span class="string literal"/><span class="string literal">"</span>, <span class="variable">log</span>: <span class="type">OSLog</span> = <span class="variable">OSLog</span>(
       <span class="variable">subsystem</span>: <span class="string literal">"</span><span class="string literal">co.pointfree.composable-architecture</span><span class="string literal">"</span>,
       <span class="variable">category</span>: <span class="string literal">"</span><span class="string literal">Reducer Instrumentation</span><span class="string literal">"</span>
     )) -&gt; <span class="keyword">Self</span></code></pre></body></html>
@@ -964,7 +964,7 @@ combine <code>forEach</code> reducers <em>before</em> parent reducers that can m
 
     <footer>
         <p>
-    Generated on <time datetime="2020-08-07T18:28:23+0000">August 7, 2020</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.4</span>.
+    Generated on <time datetime="2020-08-14T09:28:00+0000">August 14, 2020</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.4</span>.
 </p>
     </footer>
 </body>

@@ -26,7 +26,7 @@
     <nav>
         <div class="wrapper">
             <h2>On This Page</h2>
-            <ol><li><a href="#relationships">Relationships</a><ul><li><a href="#relationships">Conforms To</a></li></ul></li><li><a href="#nested type aliases">Nested Type Aliases</a><ul><li class="typealias"><a href="#actionsheetstate.button">Button</a></li></ul></li><li><a href="#initializers">Initializers</a><ul><li class="initializer"><a href="#actionsheetstate.init(title:message:buttons:)">init(title:​message:​buttons:​)</a></li></ul></li><li><a href="#properties">Properties</a><ul><li class="variable"><a href="#actionsheetstate.buttons">buttons</a></li><li class="variable"><a href="#actionsheetstate.message">message</a></li><li class="variable"><a href="#actionsheetstate.title">title</a></li></ul></li></ol>
+            <ol><li><a href="#relationships">Relationships</a><ul><li><a href="#relationships">Conforms To</a></li></ul></li><li><a href="#nested type aliases">Nested Type Aliases</a><ul><li class="typealias"><a href="#actionsheetstate.button">Button</a></li></ul></li><li><a href="#initializers">Initializers</a><ul><li class="initializer"><a href="#actionsheetstate.init(title:message:buttons:)">init(title:​message:​buttons:​)</a></li></ul></li><li><a href="#properties">Properties</a><ul><li class="variable"><a href="#actionsheetstate.id">id</a></li><li class="variable"><a href="#actionsheetstate.buttons">buttons</a></li><li class="variable"><a href="#actionsheetstate.message">message</a></li><li class="variable"><a href="#actionsheetstate.title">title</a></li><li class="variable"><a href="#actionsheetstate.debugoutput">debug​Output</a></li></ul></li></ol>
         </div>
     </nav>
 
@@ -146,7 +146,10 @@ so that you can handle its logic.</p>
         
         <h3>Conforms To</h3>
 <dl>
-    <dt class="unknown"><code>Identifiable</code></dt>
+    <dt class="protocol"><code><a href="/reactiveswift-composable-architecture/CustomDebugOutputConvertible">CustomDebugOutputConvertible</a></code></dt>
+<dd></dd>
+<dt class="unknown"><code>Equatable</code></dt>
+<dt class="unknown"><code>Hashable</code></dt>
 </dl>
 </section>
     <section id="nested type aliases">
@@ -172,7 +175,13 @@ so that you can handle its logic.</p>
     <section id="properties">
         <h2>Properties</h2>
 
-        <div role="article" class="variable" id="actionsheetstate.buttons">
+        <div role="article" class="variable" id="actionsheetstate.id">
+    <h3>
+        <code>id</code>
+    </h3>
+    <html><body><pre class="highlight"><code><span class="keyword">let</span> <span class="variable">id</span></code></pre></body></html>
+</div>
+<div role="article" class="variable" id="actionsheetstate.buttons">
     <h3>
         <code>buttons</code>
     </h3>
@@ -190,6 +199,12 @@ so that you can handle its logic.</p>
     </h3>
     <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">title</span>: <span class="type">String</span></code></pre></body></html>
 </div>
+<div role="article" class="variable" id="actionsheetstate.debugoutput">
+    <h3>
+        <code>debug​Output</code>
+    </h3>
+    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">debugOutput</span>: <span class="type">String</span></code></pre></body></html>
+</div>
     </section>
 
 
@@ -199,7 +214,7 @@ so that you can handle its logic.</p>
 
     <footer>
         <p>
-    Generated on <time datetime="2020-08-07T18:28:22+0000">August 7, 2020</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.4</span>.
+    Generated on <time datetime="2020-08-14T09:28:00+0000">August 14, 2020</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.4</span>.
 </p>
     </footer>
 </body>

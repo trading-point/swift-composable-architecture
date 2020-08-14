@@ -26,7 +26,7 @@
     <nav>
         <div class="wrapper">
             <h2>On This Page</h2>
-            <ol><li><a href="#relationships">Relationships</a><ul><li><a href="#relationships">Conforms To</a></li></ul></li><li><a href="#initializers">Initializers</a><ul><li class="initializer"><a href="#viewstore.init(_:removeduplicates:)">init(_:​remove​Duplicates:​)</a></li></ul></li><li><a href="#properties">Properties</a><ul><li class="variable"><a href="#viewstore.producer">producer</a></li><li class="variable"><a href="#viewstore.state">state</a></li><li class="variable"><a href="#viewstore.objectwillchange">object​Will​Change</a></li></ul></li><li><a href="#methods">Methods</a><ul><li class="function"><a href="#viewstore.send(_:)">send(_:​)</a></li><li class="function"><a href="#viewstore.binding(get:send:)">binding(get:​send:​)</a></li><li class="function"><a href="#viewstore.binding(get:send:)">binding(get:​send:​)</a></li><li class="function"><a href="#viewstore.binding(send:)">binding(send:​)</a></li><li class="function"><a href="#viewstore.binding(send:)">binding(send:​)</a></li></ul></li></ol>
+            <ol><li><a href="#relationships">Relationships</a><ul><li><a href="#relationships">Conforms To</a></li></ul></li><li><a href="#initializers">Initializers</a><ul><li class="initializer"><a href="#viewstore.init(_:removeduplicates:)">init(_:​remove​Duplicates:​)</a></li></ul></li><li><a href="#properties">Properties</a><ul><li class="variable"><a href="#viewstore.produced">produced</a></li><li class="variable"><a href="#viewstore.producer">producer</a></li><li class="variable"><a href="#viewstore.state">state</a></li><li class="variable"><a href="#viewstore.objectwillchange">object​Will​Change</a></li></ul></li><li><a href="#methods">Methods</a><ul><li class="function"><a href="#viewstore.send(_:)">send(_:​)</a></li><li class="function"><a href="#viewstore.binding(get:send:)">binding(get:​send:​)</a></li><li class="function"><a href="#viewstore.binding(get:send:)">binding(get:​send:​)</a></li><li class="function"><a href="#viewstore.binding(send:)">binding(send:​)</a></li><li class="function"><a href="#viewstore.binding(send:)">binding(send:​)</a></li></ul></li></ol>
         </div>
     </nav>
 
@@ -72,7 +72,7 @@ state updates:</p>
 <span class="keyword">func</span> <span class="function">viewDidLoad</span>() {
   <span class="keyword">super</span>.<span class="type">viewDidLoad</span>()
 
-  <span class="keyword">self</span>.<span class="type">viewStore</span>.<span class="type">producer</span>.<span class="type">count</span>
+  <span class="keyword">self</span>.<span class="type">viewStore</span>.<span class="type">produced</span>.<span class="type">count</span>
     .<span class="type">startWithValues</span> { [<span class="variable">weak</span> <span class="keyword">self</span>] <span class="keyword">in</span> <span class="keyword">self</span>?.<span class="type">countLabel</span>.<span class="type">text</span> = <span class="variable">$0</span> }
 }
 
@@ -131,15 +131,21 @@ state updates:</p>
     <section id="properties">
         <h2>Properties</h2>
 
-        <div role="article" class="variable" id="viewstore.producer">
+        <div role="article" class="variable" id="viewstore.produced">
     <h3>
-        <code>producer</code>
+        <code>produced</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">let</span> <span class="variable">producer</span>: <a href="/reactiveswift-composable-architecture/StoreProducer"><span class="type">StoreProducer</span></a>&lt;<span class="type">State</span>&gt;</code></pre></body></html>
+    <html><body><pre class="highlight"><code><span class="keyword">let</span> <span class="variable">produced</span>: <a href="/reactiveswift-composable-architecture/Produced"><span class="type">Produced</span></a>&lt;<span class="type">State</span>&gt;</code></pre></body></html>
 <div class="summary" role="doc-abstract">
     <p>A producer of state.</p>
 
 </div>
+</div>
+<div role="article" class="variable" id="viewstore.producer">
+    <h3>
+        <code>producer</code>
+    </h3>
+    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">producer</span>: <a href="/reactiveswift-composable-architecture/StoreProducer"><span class="type">StoreProducer</span></a>&lt;<span class="type">State</span>&gt;</code></pre></body></html>
 </div>
 <div role="article" class="variable" id="viewstore.state">
     <h3>
@@ -423,7 +429,7 @@ sending actions.</p>
 
     <footer>
         <p>
-    Generated on <time datetime="2020-08-07T18:28:22+0000">August 7, 2020</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.4</span>.
+    Generated on <time datetime="2020-08-14T09:28:00+0000">August 14, 2020</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.4</span>.
 </p>
     </footer>
 </body>
