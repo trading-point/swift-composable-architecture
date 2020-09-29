@@ -59,7 +59,7 @@
     <h3>
         <code>send(_:​file:​line:​_:​)</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">send</span>(<span class="keyword">_</span> <span class="variable">action</span>: <span class="type">LocalAction</span>, <span class="variable">file</span>: <span class="type">StaticString</span> = <span class="keyword">#file</span>, <span class="variable">line</span>: <span class="type">UInt</span> = <span class="keyword">#line</span>, <span class="keyword">_</span> <span class="variable">update</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">inout</span> <span class="type">LocalState</span>) -&gt; <span class="type">Void</span> = { <span class="keyword">_</span> <span class="keyword">in</span> }) -&gt; <span class="type">Step</span></code></pre></body></html>
+    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">send</span>(<span class="keyword">_</span> <span class="variable">action</span>: <span class="type">LocalAction</span>, <span class="variable">file</span>: <span class="type">StaticString</span> = <span class="keyword">#file</span>, <span class="variable">line</span>: <span class="type">UInt</span> = <span class="keyword">#line</span>, <span class="keyword">_</span> <span class="variable">update</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">inout</span> <span class="type">LocalState</span>) <span class="keyword">throws</span> -&gt; <span class="type">Void</span> = { <span class="keyword">_</span> <span class="keyword">in</span> }) -&gt; <span class="type">Step</span></code></pre></body></html>
 <div class="summary" role="doc-abstract">
     <p>A step that describes an action sent to a store and asserts against how the store's state
 is expected to change.</p>
@@ -84,7 +84,7 @@ is expected to change.</p>
 </tr>
 <tr>
     <th>update</th>
-    <td><code class="type">@escaping (inout Local​State) -&gt; Void</code></td>
+    <td><code class="type">@escaping (inout Local​State) throws -&gt; Void</code></td>
     <td><p>A function that describes how the test store's state is expected to change.</p>
 </td>
 </tr>
@@ -98,7 +98,7 @@ is expected to change.</p>
     <h3>
         <code>receive(_:​file:​line:​_:​)</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">receive</span>(<span class="keyword">_</span> <span class="variable">action</span>: <span class="type">Action</span>, <span class="variable">file</span>: <span class="type">StaticString</span> = <span class="keyword">#file</span>, <span class="variable">line</span>: <span class="type">UInt</span> = <span class="keyword">#line</span>, <span class="keyword">_</span> <span class="variable">update</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">inout</span> <span class="type">LocalState</span>) -&gt; <span class="type">Void</span> = { <span class="keyword">_</span> <span class="keyword">in</span> }) -&gt; <span class="type">Step</span></code></pre></body></html>
+    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">receive</span>(<span class="keyword">_</span> <span class="variable">action</span>: <span class="type">Action</span>, <span class="variable">file</span>: <span class="type">StaticString</span> = <span class="keyword">#file</span>, <span class="variable">line</span>: <span class="type">UInt</span> = <span class="keyword">#line</span>, <span class="keyword">_</span> <span class="variable">update</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">inout</span> <span class="type">LocalState</span>) <span class="keyword">throws</span> -&gt; <span class="type">Void</span> = { <span class="keyword">_</span> <span class="keyword">in</span> }) -&gt; <span class="type">Step</span></code></pre></body></html>
 <div class="summary" role="doc-abstract">
     <p>A step that describes an action received by an effect and asserts against how the store's
 state is expected to change.</p>
@@ -123,7 +123,7 @@ state is expected to change.</p>
 </tr>
 <tr>
     <th>update</th>
-    <td><code class="type">@escaping (inout Local​State) -&gt; Void</code></td>
+    <td><code class="type">@escaping (inout Local​State) throws -&gt; Void</code></td>
     <td><p>A function that describes how the test store's state is expected to change.</p>
 </td>
 </tr>
@@ -137,7 +137,7 @@ state is expected to change.</p>
     <h3>
         <code>environment(file:​line:​_:​)</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">environment</span>(<span class="variable">file</span>: <span class="type">StaticString</span> = <span class="keyword">#file</span>, <span class="variable">line</span>: <span class="type">UInt</span> = <span class="keyword">#line</span>, <span class="keyword">_</span> <span class="variable">update</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">inout</span> <span class="type">Environment</span>) -&gt; <span class="type">Void</span>) -&gt; <span class="type">Step</span></code></pre></body></html>
+    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">environment</span>(<span class="variable">file</span>: <span class="type">StaticString</span> = <span class="keyword">#file</span>, <span class="variable">line</span>: <span class="type">UInt</span> = <span class="keyword">#line</span>, <span class="keyword">_</span> <span class="variable">update</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">inout</span> <span class="type">Environment</span>) <span class="keyword">throws</span> -&gt; <span class="type">Void</span>) -&gt; <span class="type">Step</span></code></pre></body></html>
 <div class="summary" role="doc-abstract">
     <p>A step that updates a test store's environment.</p>
 
@@ -155,7 +155,7 @@ state is expected to change.</p>
   <tbody>
     <tr>
     <th>update</th>
-    <td><code class="type">@escaping (inout Environment) -&gt; Void</code></td>
+    <td><code class="type">@escaping (inout Environment) throws -&gt; Void</code></td>
     <td><p>A function that updates the test store's environment for subsequent steps.</p>
 </td>
 </tr>
@@ -169,7 +169,7 @@ state is expected to change.</p>
     <h3>
         <code>`do`(file:​line:​_:​)</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">`do`</span>(<span class="variable">file</span>: <span class="type">StaticString</span> = <span class="keyword">#file</span>, <span class="variable">line</span>: <span class="type">UInt</span> = <span class="keyword">#line</span>, <span class="keyword">_</span> <span class="variable">work</span>: <span class="attribute">@</span><span class="attribute">escaping</span> () -&gt; <span class="type">Void</span>) -&gt; <span class="type">Step</span></code></pre></body></html>
+    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">`do`</span>(<span class="variable">file</span>: <span class="type">StaticString</span> = <span class="keyword">#file</span>, <span class="variable">line</span>: <span class="type">UInt</span> = <span class="keyword">#line</span>, <span class="keyword">_</span> <span class="variable">work</span>: <span class="attribute">@</span><span class="attribute">escaping</span> () <span class="keyword">throws</span> -&gt; <span class="type">Void</span>) -&gt; <span class="type">Step</span></code></pre></body></html>
 <div class="summary" role="doc-abstract">
     <p>A step that captures some work to be done between assertions</p>
 
@@ -187,7 +187,7 @@ state is expected to change.</p>
   <tbody>
     <tr>
     <th>work</th>
-    <td><code class="type">@escaping () -&gt; Void</code></td>
+    <td><code class="type">@escaping () throws -&gt; Void</code></td>
     <td><p>A function that is called between steps.</p>
 </td>
 </tr>
@@ -206,7 +206,7 @@ state is expected to change.</p>
 
     <footer>
         <p>
-    Generated on <time datetime="2020-08-14T14:28:41+0000">August 14, 2020</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.4</span>.
+    Generated on <time datetime="2020-09-29T21:57:30+0000">September 29, 2020</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.5</span>.
 </p>
     </footer>
 </body>
