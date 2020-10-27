@@ -96,9 +96,9 @@
         <code>init(_:​id:​content:​)</code>
     </h3>
     <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">init</span>&lt;<span class="variable">EachContent</span>&gt;(<span class="keyword">_</span> <span class="variable">store</span>: <a href="/reactiveswift-composable-architecture/Store"><span class="type">Store</span></a>&lt;<span class="type">Data</span>, (<span class="type">Data</span>.<span class="type">Index</span>, <span class="type">EachAction</span>)&gt;, <span class="variable">id</span>: <span class="type">KeyPath</span>&lt;<span class="type">EachState</span>, <span class="type">ID</span>&gt;, <span class="variable">content</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<a href="/reactiveswift-composable-architecture/Store"><span class="type">Store</span></a>&lt;<span class="type">EachState</span>, <span class="type">EachAction</span>&gt;) -&gt; <span class="type">EachContent</span>) <span class="keyword">where</span> <span class="type">Data</span> == [<span class="type">EachState</span>], <span class="type">EachContent</span>: <span class="type">View</span>, <span class="type">Content</span> == <a href="/reactiveswift-composable-architecture/WithViewStore"><span class="type">WithViewStore</span></a>&lt;
-      <span class="type">Data</span>, (<span class="type">Data</span>.<span class="type">Index</span>, <span class="type">EachAction</span>),
-      <span class="type">ForEach</span>&lt;<span class="type">ContiguousArray</span>&lt;(<span class="type">Data</span>.<span class="type">Index</span>, <span class="type">EachState</span>)&gt;, <span class="type">ID</span>, <span class="type">EachContent</span>&gt;
-    &gt;</code></pre></body></html>
+        <span class="type">Data</span>, (<span class="type">Data</span>.<span class="type">Index</span>, <span class="type">EachAction</span>),
+        <span class="type">ForEach</span>&lt;<span class="type">ContiguousArray</span>&lt;(<span class="type">Data</span>.<span class="type">Index</span>, <span class="type">EachState</span>)&gt;, <span class="type">ID</span>, <span class="type">EachContent</span>&gt;
+      &gt;</code></pre></body></html>
 <div class="summary" role="doc-abstract">
     <p>Initializes a structure that computes views on demand from a store on an array of data and an
 indexed action.</p>
@@ -141,9 +141,9 @@ indexed action.</p>
         <code>init(_:​content:​)</code>
     </h3>
     <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">init</span>&lt;<span class="variable">EachContent</span>&gt;(<span class="keyword">_</span> <span class="variable">store</span>: <a href="/reactiveswift-composable-architecture/Store"><span class="type">Store</span></a>&lt;<span class="type">Data</span>, (<span class="type">Data</span>.<span class="type">Index</span>, <span class="type">EachAction</span>)&gt;, <span class="variable">content</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<a href="/reactiveswift-composable-architecture/Store"><span class="type">Store</span></a>&lt;<span class="type">EachState</span>, <span class="type">EachAction</span>&gt;) -&gt; <span class="type">EachContent</span>) <span class="keyword">where</span> <span class="type">Data</span> == [<span class="type">EachState</span>], <span class="type">EachContent</span>: <span class="type">View</span>, <span class="type">Content</span> == <a href="/reactiveswift-composable-architecture/WithViewStore"><span class="type">WithViewStore</span></a>&lt;
-      <span class="type">Data</span>, (<span class="type">Data</span>.<span class="type">Index</span>, <span class="type">EachAction</span>),
-      <span class="type">ForEach</span>&lt;<span class="type">ContiguousArray</span>&lt;(<span class="type">Data</span>.<span class="type">Index</span>, <span class="type">EachState</span>)&gt;, <span class="type">ID</span>, <span class="type">EachContent</span>&gt;
-    &gt;, <span class="type">EachState</span>: <span class="type">Identifiable</span>, <span class="type">EachState</span>.<span class="type">ID</span> == <span class="type">ID</span></code></pre></body></html>
+        <span class="type">Data</span>, (<span class="type">Data</span>.<span class="type">Index</span>, <span class="type">EachAction</span>),
+        <span class="type">ForEach</span>&lt;<span class="type">ContiguousArray</span>&lt;(<span class="type">Data</span>.<span class="type">Index</span>, <span class="type">EachState</span>)&gt;, <span class="type">ID</span>, <span class="type">EachContent</span>&gt;
+      &gt;, <span class="type">EachState</span>: <span class="type">Identifiable</span>, <span class="type">EachState</span>.<span class="type">ID</span> == <span class="type">ID</span></code></pre></body></html>
 <div class="summary" role="doc-abstract">
     <p>Initializes a structure that computes views on demand from a store on an array of data and an
 indexed action.</p>
@@ -180,9 +180,9 @@ indexed action.</p>
         <code>init(_:​content:​)</code>
     </h3>
     <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">init</span>&lt;<span class="variable">EachContent</span>: <span class="type">View</span>&gt;(<span class="keyword">_</span> <span class="variable">store</span>: <a href="/reactiveswift-composable-architecture/Store"><span class="type">Store</span></a>&lt;<a href="/reactiveswift-composable-architecture/IdentifiedArray"><span class="type">IdentifiedArray</span></a>&lt;<span class="type">ID</span>, <span class="type">EachState</span>&gt;, (<span class="type">ID</span>, <span class="type">EachAction</span>)&gt;, <span class="variable">content</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<a href="/reactiveswift-composable-architecture/Store"><span class="type">Store</span></a>&lt;<span class="type">EachState</span>, <span class="type">EachAction</span>&gt;) -&gt; <span class="type">EachContent</span>) <span class="keyword">where</span> <span class="type">EachContent</span>: <span class="type">View</span>, <span class="type">Data</span> == <a href="/reactiveswift-composable-architecture/IdentifiedArray"><span class="type">IdentifiedArray</span></a>&lt;<span class="type">ID</span>, <span class="type">EachState</span>&gt;, <span class="type">Content</span> == <a href="/reactiveswift-composable-architecture/WithViewStore"><span class="type">WithViewStore</span></a>&lt;
-      <a href="/reactiveswift-composable-architecture/IdentifiedArray"><span class="type">IdentifiedArray</span></a>&lt;<span class="type">ID</span>, <span class="type">EachState</span>&gt;, (<span class="type">ID</span>, <span class="type">EachAction</span>),
-      <span class="type">ForEach</span>&lt;<a href="/reactiveswift-composable-architecture/IdentifiedArray"><span class="type">IdentifiedArray</span></a>&lt;<span class="type">ID</span>, <span class="type">EachState</span>&gt;, <span class="type">ID</span>, <span class="type">EachContent</span>&gt;
-    &gt;</code></pre></body></html>
+        <a href="/reactiveswift-composable-architecture/IdentifiedArray"><span class="type">IdentifiedArray</span></a>&lt;<span class="type">ID</span>, <span class="type">EachState</span>&gt;, (<span class="type">ID</span>, <span class="type">EachAction</span>),
+        <span class="type">ForEach</span>&lt;<a href="/reactiveswift-composable-architecture/IdentifiedArray"><span class="type">IdentifiedArray</span></a>&lt;<span class="type">ID</span>, <span class="type">EachState</span>&gt;, <span class="type">ID</span>, <span class="type">EachContent</span>&gt;
+      &gt;</code></pre></body></html>
 <div class="summary" role="doc-abstract">
     <p>Initializes a structure that computes views on demand from a store on a collection of data and
 an identified action.</p>
@@ -239,7 +239,7 @@ an identified action.</p>
 
     <footer>
         <p>
-    Generated on <time datetime="2020-09-29T21:57:30+0000">September 29, 2020</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.5</span>.
+    Generated on <time datetime="2020-10-27T11:48:47+0000">October 27, 2020</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.5</span>.
 </p>
     </footer>
 </body>
