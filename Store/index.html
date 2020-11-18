@@ -26,7 +26,7 @@
     <nav>
         <div class="wrapper">
             <h2>On This Page</h2>
-            <ol><li><a href="#initializers">Initializers</a><ul><li class="initializer"><a href="#store.init(initialstate:reducer:environment:)">init(initial​State:​reducer:​environment:​)</a></li></ul></li><li><a href="#properties">Properties</a><ul><li class="variable"><a href="#store.stateless">stateless</a></li><li class="variable"><a href="#store.actionless">actionless</a></li></ul></li><li><a href="#methods">Methods</a><ul><li class="function"><a href="#store.scope(state:action:)">scope(state:​action:​)</a></li><li class="function"><a href="#store.scope(state:)">scope(state:​)</a></li><li class="function"><a href="#store.scope(state:action:)">scope(state:​action:​)</a></li><li class="function"><a href="#store.scope(state:)">scope(state:​)</a></li><li class="function"><a href="#store.iflet(then:else:)">if​Let(then:​else:​)</a></li><li class="function"><a href="#store.iflet(then:)">if​Let(then:​)</a></li></ul></li></ol>
+            <ol><li><a href="#initializers">Initializers</a><ul><li class="initializer"><a href="#store.init(initialstate:reducer:environment:)">init(initial​State:​reducer:​environment:​)</a></li></ul></li><li><a href="#properties">Properties</a><ul><li class="variable"><a href="#store.stateless">stateless</a></li><li class="variable"><a href="#store.actionless">actionless</a></li></ul></li><li><a href="#methods">Methods</a><ul><li class="function"><a href="#store.scope(state:)">scope(state:​)</a></li><li class="function"><a href="#store.scope(state:action:)">scope(state:​action:​)</a></li><li class="function"><a href="#store.scope(state:action:)">scope(state:​action:​)</a></li><li class="function"><a href="#store.scope(state:)">scope(state:​)</a></li><li class="function"><a href="#store.producerscope(state:action:)">producer​Scope(state:​action:​)</a></li><li class="function"><a href="#store.producerscope(state:)">producer​Scope(state:​)</a></li><li class="function"><a href="#store.iflet(then:else:)">if​Let(then:​else:​)</a></li><li class="function"><a href="#store.iflet(then:)">if​Let(then:​)</a></li></ul></li></ol>
         </div>
     </nav>
 
@@ -121,7 +121,19 @@ the <code>scope</code> method to derive more focused stores that can be passed t
     <section id="methods">
         <h2>Methods</h2>
 
-        <div role="article" class="function" id="store.scope(state:action:)">
+        <div role="article" class="function" id="store.scope(state:)">
+    <h3>
+        <code>scope(state:​)</code>
+    </h3>
+    <html><body><pre class="highlight"><code><span class="attribute">@</span><span class="attribute">available</span>(*, <span class="variable">deprecated</span>, <span class="variable">renamed</span>: <span class="string literal">"producerScope(state:)"</span>) <span class="keyword">public</span> <span class="keyword">func</span> <span class="function">scope</span>&lt;<span class="variable">LocalState</span>&gt;(<span class="variable">state</span> <span class="variable">toLocalState</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<a href="/reactiveswift-composable-architecture/Effect"><span class="type">Effect</span></a>&lt;<span class="type">State</span>, <span class="type">Never</span>&gt;) -&gt; <a href="/reactiveswift-composable-architecture/Effect"><span class="type">Effect</span></a>&lt;<span class="type">LocalState</span>, <span class="type">Never</span>&gt;) -&gt; <a href="/reactiveswift-composable-architecture/Effect"><span class="type">Effect</span></a>&lt;<a href="/reactiveswift-composable-architecture/Store"><span class="type">Store</span></a>&lt;<span class="type">LocalState</span>, <span class="type">Action</span>&gt;, <span class="type">Never</span>&gt;</code></pre></body></html>
+</div>
+<div role="article" class="function" id="store.scope(state:action:)">
+    <h3>
+        <code>scope(state:​action:​)</code>
+    </h3>
+    <html><body><pre class="highlight"><code><span class="attribute">@</span><span class="attribute">available</span>(*, <span class="variable">deprecated</span>, <span class="variable">renamed</span>: <span class="string literal">"producerScope(state:action:)"</span>) <span class="keyword">public</span> <span class="keyword">func</span> <span class="function">scope</span>&lt;<span class="variable">LocalState</span>, <span class="variable">LocalAction</span>&gt;(<span class="variable">state</span> <span class="variable">toLocalState</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<a href="/reactiveswift-composable-architecture/Effect"><span class="type">Effect</span></a>&lt;<span class="type">State</span>, <span class="type">Never</span>&gt;) -&gt; <a href="/reactiveswift-composable-architecture/Effect"><span class="type">Effect</span></a>&lt;<span class="type">LocalState</span>, <span class="type">Never</span>&gt;, <span class="variable">action</span> <span class="variable">fromLocalAction</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="type">LocalAction</span>) -&gt; <span class="type">Action</span>) -&gt; <a href="/reactiveswift-composable-architecture/Effect"><span class="type">Effect</span></a>&lt;<a href="/reactiveswift-composable-architecture/Store"><span class="type">Store</span></a>&lt;<span class="type">LocalState</span>, <span class="type">LocalAction</span>&gt;, <span class="type">Never</span>&gt;</code></pre></body></html>
+</div>
+<div role="article" class="function" id="store.scope(state:action:)">
     <h3>
         <code>scope(state:​action:​)</code>
     </h3>
@@ -211,11 +223,11 @@ example:</p>
   <p>A new store with its domain (state and action) transformed.</p>
 
 </div>
-<div role="article" class="function" id="store.scope(state:action:)">
+<div role="article" class="function" id="store.producerscope(state:action:)">
     <h3>
-        <code>scope(state:​action:​)</code>
+        <code>producer​Scope(state:​action:​)</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">scope</span>&lt;<span class="variable">LocalState</span>, <span class="variable">LocalAction</span>&gt;(<span class="variable">state</span> <span class="variable">toLocalState</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<a href="/reactiveswift-composable-architecture/Effect"><span class="type">Effect</span></a>&lt;<span class="type">State</span>, <span class="type">Never</span>&gt;) -&gt; <a href="/reactiveswift-composable-architecture/Effect"><span class="type">Effect</span></a>&lt;<span class="type">LocalState</span>, <span class="type">Never</span>&gt;, <span class="variable">action</span> <span class="variable">fromLocalAction</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="type">LocalAction</span>) -&gt; <span class="type">Action</span>) -&gt; <a href="/reactiveswift-composable-architecture/Effect"><span class="type">Effect</span></a>&lt;<a href="/reactiveswift-composable-architecture/Store"><span class="type">Store</span></a>&lt;<span class="type">LocalState</span>, <span class="type">LocalAction</span>&gt;, <span class="type">Never</span>&gt;</code></pre></body></html>
+    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">producerScope</span>&lt;<span class="variable">LocalState</span>, <span class="variable">LocalAction</span>&gt;(<span class="variable">state</span> <span class="variable">toLocalState</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<a href="/reactiveswift-composable-architecture/Effect"><span class="type">Effect</span></a>&lt;<span class="type">State</span>, <span class="type">Never</span>&gt;) -&gt; <a href="/reactiveswift-composable-architecture/Effect"><span class="type">Effect</span></a>&lt;<span class="type">LocalState</span>, <span class="type">Never</span>&gt;, <span class="variable">action</span> <span class="variable">fromLocalAction</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="type">LocalAction</span>) -&gt; <span class="type">Action</span>) -&gt; <a href="/reactiveswift-composable-architecture/Effect"><span class="type">Effect</span></a>&lt;<a href="/reactiveswift-composable-architecture/Store"><span class="type">Store</span></a>&lt;<span class="type">LocalState</span>, <span class="type">LocalAction</span>&gt;, <span class="type">Never</span>&gt;</code></pre></body></html>
 <div class="summary" role="doc-abstract">
     <p>Scopes the store to a producer of stores of more local state and local actions.</p>
 
@@ -249,11 +261,11 @@ example:</p>
   <p>A producer of stores with its domain (state and action) transformed.</p>
 
 </div>
-<div role="article" class="function" id="store.scope(state:)">
+<div role="article" class="function" id="store.producerscope(state:)">
     <h3>
-        <code>scope(state:​)</code>
+        <code>producer​Scope(state:​)</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">scope</span>&lt;<span class="variable">LocalState</span>&gt;(<span class="variable">state</span> <span class="variable">toLocalState</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<a href="/reactiveswift-composable-architecture/Effect"><span class="type">Effect</span></a>&lt;<span class="type">State</span>, <span class="type">Never</span>&gt;) -&gt; <a href="/reactiveswift-composable-architecture/Effect"><span class="type">Effect</span></a>&lt;<span class="type">LocalState</span>, <span class="type">Never</span>&gt;) -&gt; <a href="/reactiveswift-composable-architecture/Effect"><span class="type">Effect</span></a>&lt;<a href="/reactiveswift-composable-architecture/Store"><span class="type">Store</span></a>&lt;<span class="type">LocalState</span>, <span class="type">Action</span>&gt;, <span class="type">Never</span>&gt;</code></pre></body></html>
+    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">producerScope</span>&lt;<span class="variable">LocalState</span>&gt;(<span class="variable">state</span> <span class="variable">toLocalState</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<a href="/reactiveswift-composable-architecture/Effect"><span class="type">Effect</span></a>&lt;<span class="type">State</span>, <span class="type">Never</span>&gt;) -&gt; <a href="/reactiveswift-composable-architecture/Effect"><span class="type">Effect</span></a>&lt;<span class="type">LocalState</span>, <span class="type">Never</span>&gt;) -&gt; <a href="/reactiveswift-composable-architecture/Effect"><span class="type">Effect</span></a>&lt;<a href="/reactiveswift-composable-architecture/Store"><span class="type">Store</span></a>&lt;<span class="type">LocalState</span>, <span class="type">Action</span>&gt;, <span class="type">Never</span>&gt;</code></pre></body></html>
 <div class="summary" role="doc-abstract">
     <p>Scopes the store to a producer of stores of more local state and local actions.</p>
 
@@ -391,7 +403,7 @@ case.</p>
 
     <footer>
         <p>
-    Generated on <time datetime="2020-10-27T11:48:47+0000">October 27, 2020</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.5</span>.
+    Generated on <time datetime="2020-11-18T16:52:08+0000">November 18, 2020</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.5</span>.
 </p>
     </footer>
 </body>
