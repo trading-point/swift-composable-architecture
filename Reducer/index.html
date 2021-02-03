@@ -383,7 +383,7 @@ order from child to parent domain.</p>
 
 <html><body><pre class="highlight"><code><span class="keyword">let</span> <span class="variable">parentReducer</span> = <span class="variable">Reducer</span>&lt;<span class="type">ParentState</span>, <span class="type">ParentAction</span>, <span class="type">ParentEnvironment</span>&gt;.<span class="type">combine</span>(
   <span class="comment">// Combined before parent so that it can react to `.dismiss` while state is non-`nil`.</span>
-  <span class="variable">childReducer</span>.<span class="type">optional</span>.<span class="type">pullback</span>(
+  <span class="variable">childReducer</span>.<span class="type">optional</span>().<span class="type">pullback</span>(
     <span class="variable">state</span>: \.<span class="type">child</span>,
     <span class="variable">action</span>: /<span class="variable">ParentAction</span>.<span class="type">child</span>,
     <span class="variable">environment</span>: { <span class="variable">$0</span>.<span class="type">child</span> }
@@ -459,7 +459,7 @@ order from child to parent domain.</p>
 
 <html><body><pre class="highlight"><code><span class="keyword">let</span> <span class="variable">parentReducer</span> = <span class="variable">Reducer</span>&lt;<span class="type">ParentState</span>, <span class="type">ParentAction</span>, <span class="type">ParentEnvironment</span>&gt;.<span class="type">combine</span>(
   <span class="comment">// Combined before parent so that it can react to `.dismiss` while state is non-`nil`.</span>
-  <span class="variable">childReducer</span>.<span class="type">optional</span>.<span class="type">pullback</span>(
+  <span class="variable">childReducer</span>.<span class="type">optional</span>().<span class="type">pullback</span>(
     <span class="variable">state</span>: \.<span class="type">child</span>,
     <span class="variable">action</span>: /<span class="variable">ParentAction</span>.<span class="type">child</span>,
     <span class="variable">environment</span>: { <span class="variable">$0</span>.<span class="type">child</span> }
@@ -536,7 +536,7 @@ order from child to parent domain.</p>
 <html><body><pre class="highlight"><code><span class="keyword">let</span> <span class="variable">parentReducer</span>: <a href="/reactiveswift-composable-architecture/Reducer"><span class="type">Reducer</span></a>&lt;<span class="type">ParentState</span>, <span class="type">ParentAction</span>, <span class="type">ParentEnvironment</span>&gt; =
   <span class="comment">// Run before parent so that it can react to `.dismiss` while state is non-`nil`.</span>
   <span class="variable">childReducer</span>
-    .<span class="type">optional</span>
+    .<span class="type">optional</span>()
     .<span class="type">pullback</span>(
       <span class="variable">state</span>: \.<span class="type">child</span>,
       <span class="variable">action</span>: /<span class="variable">ParentAction</span>.<span class="type">child</span>,
@@ -608,7 +608,7 @@ then <em>pull them back</em> and <em>combine</em> them into one big reducer that
 
 <html><body><pre class="highlight"><code><span class="comment">// Global domain that holds a local domain:</span>
 <span class="keyword">struct</span> <span class="type">AppState</span> { <span class="keyword">var</span> <span class="variable">settings</span>: <span class="type">SettingsState</span>, <span class="comment">/* rest of state */</span> }
-<span class="keyword">struct</span> <span class="type">AppAction</span> { <span class="keyword">case</span> <span class="variable">settings</span>(<span class="type">SettingsAction</span>), <span class="comment">/* other actions */</span> }
+<span class="keyword">enum</span> <span class="type">AppAction</span> { <span class="keyword">case</span> <span class="variable">settings</span>(<span class="type">SettingsAction</span>), <span class="comment">/* other actions */</span> }
 <span class="keyword">struct</span> <span class="type">AppEnvironment</span> { <span class="keyword">var</span> <span class="variable">settings</span>: <span class="type">SettingsEnvironment</span>, <span class="comment">/* rest of dependencies */</span> }
 
 <span class="comment">// A reducer that works on the local domain:</span>
@@ -680,7 +680,7 @@ optional local domain:</p>
 
 <html><body><pre class="highlight"><code><span class="comment">// Global domain that holds an optional local domain:</span>
 <span class="keyword">struct</span> <span class="type">AppState</span> { <span class="keyword">var</span> <span class="variable">modal</span>: <span class="type">ModalState</span>? }
-<span class="keyword">struct</span> <span class="type">AppAction</span> { <span class="keyword">case</span> <span class="variable">modal</span>(<span class="type">ModalAction</span>) }
+<span class="keyword">enum</span> <span class="type">AppAction</span> { <span class="keyword">case</span> <span class="variable">modal</span>(<span class="type">ModalAction</span>) }
 <span class="keyword">struct</span> <span class="type">AppEnvironment</span> { <span class="keyword">var</span> <span class="variable">mainQueue</span>: <span class="type">DateScheduler</span> }
 
 <span class="comment">// A reducer that works on the non-optional local domain:</span>
@@ -728,7 +728,7 @@ on a collection of elements.</p>
 <div class="discussion">
     <html><body><pre class="highlight"><code><span class="comment">// Global domain that holds a collection of local domains:</span>
 <span class="keyword">struct</span> <span class="type">AppState</span> { <span class="keyword">var</span> <span class="variable">todos</span>: [<span class="type">Todo</span>] }
-<span class="keyword">struct</span> <span class="type">AppAction</span> { <span class="keyword">case</span> <span class="variable">todo</span>(<span class="variable">index</span>: <span class="type">Int</span>, <span class="variable">action</span>: <span class="type">TodoAction</span>) }
+<span class="keyword">enum</span> <span class="type">AppAction</span> { <span class="keyword">case</span> <span class="variable">todo</span>(<span class="variable">index</span>: <span class="type">Int</span>, <span class="variable">action</span>: <span class="type">TodoAction</span>) }
 <span class="keyword">struct</span> <span class="type">AppEnvironment</span> { <span class="keyword">var</span> <span class="variable">mainQueue</span>: <span class="type">DateScheduler</span> }
 
 <span class="comment">// A reducer that works on a local domain:</span>
@@ -798,7 +798,7 @@ on an identified array of elements.</p>
 <div class="discussion">
     <html><body><pre class="highlight"><code><span class="comment">// Global domain that holds a collection of local domains:</span>
 <span class="keyword">struct</span> <span class="type">AppState</span> { <span class="keyword">var</span> <span class="variable">todos</span>: <a href="/reactiveswift-composable-architecture/IdentifiedArrayOf"><span class="type">IdentifiedArrayOf</span></a>&lt;<span class="type">Todo</span>&gt; }
-<span class="keyword">struct</span> <span class="type">AppAction</span> { <span class="keyword">case</span> <span class="variable">todo</span>(<span class="variable">id</span>: <span class="type">Todo</span>.<span class="type">ID</span>, <span class="variable">action</span>: <span class="type">TodoAction</span>) }
+<span class="keyword">enum</span> <span class="type">AppAction</span> { <span class="keyword">case</span> <span class="variable">todo</span>(<span class="variable">id</span>: <span class="type">Todo</span>.<span class="type">ID</span>, <span class="variable">action</span>: <span class="type">TodoAction</span>) }
 <span class="keyword">struct</span> <span class="type">AppEnvironment</span> { <span class="keyword">var</span> <span class="variable">mainQueue</span>: <span class="type">DateScheduler</span> }
 
 <span class="comment">// A reducer that works on a local domain:</span>
@@ -964,7 +964,7 @@ combine <code>forEach</code> reducers <em>before</em> parent reducers that can m
 
     <footer>
         <p>
-    Generated on <time datetime="2020-11-18T16:52:08+0000">November 18, 2020</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.5</span>.
+    Generated on <time datetime="2021-02-03T12:49:06+0000">February 3, 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.5</span>.
 </p>
     </footer>
 </body>
