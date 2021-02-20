@@ -151,16 +151,127 @@ example:</p>
 <span class="keyword">struct</span> <span class="type">AppAction</span> { <span class="keyword">case</span> <span class="variable">login</span>(<span class="type">LoginAction</span>), ... }
 
 <span class="comment">// A store that runs the entire application.</span>
-<span class="keyword">let</span> <span class="variable">store</span> = <span class="variable">Store</span>(<span class="variable">initialState</span>: <span class="type">AppState</span>(), <span class="variable">reducer</span>: <span class="type">appReducer</span>, <span class="variable">environment</span>: ())
+<span class="keyword">let</span> <span class="variable">store</span> = <span class="variable">Store</span>(
+  <span class="variable">initialState</span>: <span class="type">AppState</span>(),
+  <span class="variable">reducer</span>: <span class="type">appReducer</span>,
+  <span class="variable">environment</span>: <span class="type">AppEnvironment</span>()
+)
 
 <span class="comment">// Construct a login view by scoping the store to one that works with only login domain.</span>
-<span class="keyword">let</span> <span class="variable">loginView</span> = <span class="variable">LoginView</span>(
+<span class="variable">LoginView</span>(
   <span class="variable">store</span>: <span class="type">store</span>.<span class="type">scope</span>(
     <span class="variable">state</span>: { <span class="variable">$0</span>.<span class="type">login</span> },
     <span class="variable">action</span>: { <span class="variable">AppAction</span>.<span class="type">login</span>(<span class="variable">$0</span>) }
   )
 )
 </code></pre></body></html>
+<p>Scoping in this fashion allows you to better modularize your application. In this case,
+<code>LoginView</code> could be extracted to a module that has no access to <code>AppState</code> or <code>AppAction</code>.</p>
+
+<p>Scoping also gives a view the opportunity to focus on just the state and actions it cares
+about, even if its feature domain is larger.</p>
+
+<p>For example, the above login domain could model a two screen login flow: a login form followed
+by a two-factor authentication screen. The second screen's domain might be nested in the
+first:</p>
+
+<html><body><pre class="highlight"><code><span class="keyword">struct</span> <span class="type">LoginState</span>: <span class="type">Equatable</span> {
+  <span class="keyword">var</span> <span class="variable">email</span> = <span class="string literal">"</span><span class="string literal"/><span class="string literal">"</span>
+  <span class="keyword">var</span> <span class="variable">password</span> = <span class="string literal">"</span><span class="string literal"/><span class="string literal">"</span>
+  <span class="keyword">var</span> <span class="variable">twoFactorAuth</span>: <span class="type">TwoFactorAuthState</span>?
+}
+
+<span class="keyword">enum</span> <span class="type">LoginAction</span>: <span class="type">Equatable</span> {
+  <span class="keyword">case</span> <span class="variable">emailChanged</span>(<span class="type">String</span>)
+  <span class="keyword">case</span> <span class="variable">loginButtonTapped</span>
+  <span class="keyword">case</span> <span class="variable">loginResponse</span>(<span class="type">Result</span>&lt;<span class="type">TwoFactorAuthState</span>, <span class="type">LoginError</span>&gt;)
+  <span class="keyword">case</span> <span class="variable">passwordChanged</span>(<span class="type">String</span>)
+  <span class="keyword">case</span> <span class="variable">twoFactorAuth</span>(<span class="type">TwoFactorAuthAction</span>)
+}
+</code></pre></body></html>
+<p>The login view holds onto a store of this domain:</p>
+
+<html><body><pre class="highlight"><code><span class="keyword">struct</span> <span class="type">LoginView</span>: <span class="type">View</span> {
+  <span class="keyword">let</span> <span class="variable">store</span>: <a href="/reactiveswift-composable-architecture/Store"><span class="type">Store</span></a>&lt;<span class="type">LoginState</span>, <span class="type">LoginAction</span>&gt;
+
+  <span class="keyword">var</span> <span class="variable">body</span>: <span class="keyword">some</span> <span class="type">View</span> { ... }
+}
+</code></pre></body></html>
+<p>If its body were to use a view store of the same domain, this would introduce a number of
+problems:</p>
+
+<ul>
+<li>
+<p>The login view would be able to read from <code>twoFactorAuth</code> state. This state is only intended
+to be read from the two-factor auth screen.</p>
+</li>
+<li>
+<p>Even worse, changes to <code>twoFactorAuth</code> state would now cause SwiftUI to recompute
+<code>LoginView</code>'s body unnecessarily.</p>
+</li>
+<li>
+<p>The login view would be able to send <code>twoFactorAuth</code> actions. These actions are only
+intended to be sent from the two-factor auth screen (and reducer).</p>
+</li>
+<li>
+<p>The login view would be able to send non user-facing login actions, like <code>loginResponse</code>.
+These actions are only intended to be used in the login reducer to feed the results of
+effects back into the store.</p>
+</li>
+</ul>
+
+<p>To avoid these issues, one can introduce a view-specific domain that slices off the subset of
+state and actions that a view cares about:</p>
+
+<html><body><pre class="highlight"><code><span class="keyword">extension</span> <span class="type">LoginView</span> {
+  <span class="keyword">struct</span> <span class="type">State</span>: <span class="type">Equatable</span> {
+    <span class="keyword">var</span> <span class="variable">email</span>: <span class="type">String</span>
+    <span class="keyword">var</span> <span class="variable">password</span>: <span class="type">String</span>
+  }
+
+  <span class="keyword">enum</span> <span class="type">Action</span>: <span class="type">Equatable</span> {
+    <span class="keyword">case</span> <span class="variable">emailChanged</span>(<span class="type">String</span>)
+    <span class="keyword">case</span> <span class="variable">loginButtonTapped</span>
+    <span class="keyword">case</span> <span class="variable">passwordChanged</span>(<span class="type">String</span>)
+  }
+}
+</code></pre></body></html>
+<p>One can also introduce a couple helpers that transform feature state into view state and
+transform view actions into feature actions.</p>
+
+<html><body><pre class="highlight"><code><span class="keyword">extension</span> <span class="type">LoginState</span> {
+  <span class="keyword">var</span> <span class="variable">view</span>: <span class="type">LoginView</span>.<span class="type">State</span> {
+    .<span class="variable">init</span>(<span class="variable">email</span>: <span class="keyword">self</span>.<span class="type">email</span>, <span class="variable">password</span>: <span class="keyword">self</span>.<span class="type">password</span>)
+  }
+}
+
+<span class="keyword">extension</span> <span class="type">LoginView</span>.<span class="type">Action</span> {
+  <span class="keyword">var</span> <span class="variable">feature</span>: <span class="type">LoginAction</span> {
+    <span class="keyword">switch</span> <span class="keyword">self</span> {
+    <span class="keyword">case</span> <span class="keyword">let</span> .<span class="variable">emailChanged</span>(<span class="variable">email</span>)
+      <span class="keyword">return</span> .<span class="variable">emailChanged</span>(<span class="variable">email</span>)
+    <span class="keyword">case</span> .<span class="variable">loginButtonTapped</span>:
+      <span class="keyword">return</span> .<span class="variable">loginButtonTapped</span>
+    <span class="keyword">case</span> <span class="keyword">let</span> .<span class="variable">passwordChanged</span>(<span class="variable">password</span>)
+      <span class="keyword">return</span> .<span class="variable">passwordChanged</span>(<span class="variable">password</span>)
+    }
+  }
+}
+</code></pre></body></html>
+<p>With these helpers defined, <code>LoginView</code> can now scope its store's feature domain into its view
+domain:</p>
+
+<html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">body</span>: <span class="keyword">some</span> <span class="type">View</span> {
+  <span class="variable">WithViewStore</span>(
+    <span class="keyword">self</span>.<span class="type">store</span>.<span class="type">scope</span>(<span class="variable">state</span>: { <span class="variable">$0</span>.<span class="type">view</span> }, <span class="variable">action</span>: { <span class="variable">$0</span>.<span class="type">feature</span> })
+  ) { <span class="variable">viewStore</span> <span class="keyword">in</span>
+    ...
+  }
+}
+</code></pre></body></html>
+<p>This view store is now incapable of reading any state but view state (and will not recompute
+when non-view state changes), and is incapable of sending any actions but view actions.</p>
+
 </div>
 <h4>Parameters</h4>
 
@@ -403,7 +514,7 @@ case.</p>
 
     <footer>
         <p>
-    Generated on <time datetime="2021-02-03T12:49:06+0000">February 3, 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.5</span>.
+    Generated on <time datetime="2021-02-20T15:22:35+0000">February 20, 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.5</span>.
 </p>
     </footer>
 </body>

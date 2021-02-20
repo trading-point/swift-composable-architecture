@@ -26,7 +26,7 @@
     <nav>
         <div class="wrapper">
             <h2>On This Page</h2>
-            <ol><li><a href="#relationships">Relationships</a><ul><li><a href="#relationships">Member Of</a></li></ul></li><li><a href="#methods">Methods</a><ul><li class="function"><a href="#teststore.step.send(_:file:line:_:)">send(_:​file:​line:​_:​)</a></li><li class="function"><a href="#teststore.step.receive(_:file:line:_:)">receive(_:​file:​line:​_:​)</a></li><li class="function"><a href="#teststore.step.environment(file:line:_:)">environment(file:​line:​_:​)</a></li><li class="function"><a href="#teststore.step.`do`(file:line:_:)">`do`(file:​line:​_:​)</a></li></ul></li></ol>
+            <ol><li><a href="#relationships">Relationships</a><ul><li><a href="#relationships">Member Of</a></li></ul></li><li><a href="#methods">Methods</a><ul><li class="function"><a href="#teststore.step.send(_:file:line:_:)">send(_:​file:​line:​_:​)</a></li><li class="function"><a href="#teststore.step.receive(_:file:line:_:)">receive(_:​file:​line:​_:​)</a></li><li class="function"><a href="#teststore.step.environment(file:line:_:)">environment(file:​line:​_:​)</a></li><li class="function"><a href="#teststore.step.`do`(file:line:_:)">`do`(file:​line:​_:​)</a></li><li class="function"><a href="#teststore.step.sequence(_:file:line:)">sequence(_:​file:​line:​)</a></li><li class="function"><a href="#teststore.step.sequence(_:file:line:)">sequence(_:​file:​line:​)</a></li></ul></li></ol>
         </div>
     </nav>
 
@@ -197,6 +197,70 @@ state is expected to change.</p>
   <p>A step that captures some work to be done between assertions.</p>
 
 </div>
+<div role="article" class="function" id="teststore.step.sequence(_:file:line:)">
+    <h3>
+        <code>sequence(_:​file:​line:​)</code>
+    </h3>
+    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">sequence</span>(<span class="keyword">_</span> <span class="variable">steps</span>: [<span class="type">Step</span>], <span class="variable">file</span>: <span class="type">StaticString</span> = <span class="keyword">#file</span>, <span class="variable">line</span>: <span class="type">UInt</span> = <span class="keyword">#line</span>) -&gt; <span class="type">Step</span></code></pre></body></html>
+<div class="summary" role="doc-abstract">
+    <p>A step that captures a sub-sequence of steps.</p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>steps</th>
+    <td><code class="type">[Step]</code></td>
+    <td><p>An array of <code>Step</code></p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>A step that captures a sub-sequence of steps.</p>
+
+</div>
+<div role="article" class="function" id="teststore.step.sequence(_:file:line:)">
+    <h3>
+        <code>sequence(_:​file:​line:​)</code>
+    </h3>
+    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">sequence</span>(<span class="keyword">_</span> <span class="variable">steps</span>: <span class="type">Step</span>, <span class="variable">file</span>: <span class="type">StaticString</span> = <span class="keyword">#file</span>, <span class="variable">line</span>: <span class="type">UInt</span> = <span class="keyword">#line</span>) -&gt; <span class="type">Step</span></code></pre></body></html>
+<div class="summary" role="doc-abstract">
+    <p>A step that captures a sub-sequence of steps.</p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>steps</th>
+    <td><code class="type">Step</code></td>
+    <td><p>A variadic list of <code>Step</code></p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>A step that captures a sub-sequence of steps.</p>
+
+</div>
     </section>
 
 
@@ -206,7 +270,7 @@ state is expected to change.</p>
 
     <footer>
         <p>
-    Generated on <time datetime="2021-02-03T12:49:06+0000">February 3, 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.5</span>.
+    Generated on <time datetime="2021-02-20T15:22:35+0000">February 20, 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.5</span>.
 </p>
     </footer>
 </body>
