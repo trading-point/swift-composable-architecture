@@ -53,26 +53,27 @@ behaves:</p>
 
 <ul>
 <li>
-<p>After each action is sent you must describe precisely how the state changed from before the
-action was sent to after it was sent.</p>
-<p>If even the smallest piece of data differs the test will fail. This guarantees that you are
-proving you know precisely how the state of the system changes.</p>
+<p>After each action is sent you must describe precisely how the state changed from before
+the action was sent to after it was sent.</p>
+<p>If even the smallest piece of data differs the test will fail. This guarantees that you
+are proving you know precisely how the state of the system changes.</p>
 </li>
 <li>
-<p>Sending an action can sometimes cause an effect to be executed, and if that effect emits an
-action that is fed back into the system, you <strong>must</strong> explicitly assert that you expect to
-receive that action from the effect, <em>and</em> you must assert how state changed as a result.</p>
-<p>If you try to send another action before you have handled all effect emissions the assertion
-will fail. This guarantees that you do not accidentally forget about an effect emission, and
-that the sequence of steps you are describing will mimic how the application behaves in
-reality.</p>
+<p>Sending an action can sometimes cause an effect to be executed, and if that effect emits
+an action that is fed back into the system, you <strong>must</strong> explicitly assert that you expect
+to receive that action from the effect, <em>and</em> you must assert how state changed as a
+result.</p>
+<p>If you try to send another action before you have handled all effect emissions the
+assertion will fail. This guarantees that you do not accidentally forget about an effect
+emission, and that the sequence of steps you are describing will mimic how the application
+behaves in reality.</p>
 </li>
 <li>
 <p>All effects must complete by the time the assertion has finished running the steps you
 specify.</p>
 <p>If at the end of the assertion there is still an in-flight effect running, the assertion
-will fail. This helps exhaustively prove that you know what effects are in flight and forces
-you to prove that effects will not cause any future changes to your state.</p>
+will fail. This helps exhaustively prove that you know what effects are in flight and
+forces you to prove that effects will not cause any future changes to your state.</p>
 </li>
 </ul>
 
@@ -296,7 +297,7 @@ not expect it would cause a test failure.</p>
 
     <footer>
         <p>
-    Generated on <time datetime="2021-02-20T15:22:35+0000">February 20, 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.5</span>.
+    Generated on <time datetime="2021-03-16T17:14:28+0000">March 16, 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.5</span>.
 </p>
     </footer>
 </body>
