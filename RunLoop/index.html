@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ComposableArchitecture - StoreProducer</title>
+    <title>ComposableArchitecture - RunLoop</title>
     <link rel="stylesheet" type="text/css" href="/reactiveswift-composable-architecture/all.css" media="all" />
 </head>
 <body>
@@ -26,27 +26,28 @@
     <nav>
         <div class="wrapper">
             <h2>On This Page</h2>
-            <ol/>
+            <ol><li><a href="#properties">Properties</a><ul><li class="variable"><a href="#runloop.debugoutput">debug​Output</a></li></ul></li></ol>
         </div>
     </nav>
 
     <main>
         <article>
             <h1>
-    <small>Typealias</small>
-    <span class="name">Store​Producer</span>
+    <small>Extensions on</small>
+    <code class="name">RunLoop</code>
 </h1>
+    <section id="properties">
+        <h2>Properties</h2>
 
-<div class="declaration">
-<pre class="highlight"><code><span class="attribute">@</span><span class="attribute">available</span>(
-  *, <span class="variable">deprecated</span>,
-  <span class="variable">message</span>:
-    <span class="string literal">&quot;&quot;&quot;
-Consider using `Produced&lt;State&gt;` instead, this typealias is added for backward compatibility and will be removed in the next major release.
-&quot;&quot;&quot;</span>
-)
-<span class="keyword">public</span> <span class="keyword">typealias</span> <span class="variable">StoreProducer</span>&lt;<span class="variable">State</span>&gt; = <span class="type">Produced</span>&lt;<span class="type">State</span>&gt;</code></pre>
+        <div role="article" class="variable" id="runloop.debugoutput">
+    <h3>
+        <code>debug​Output</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">var</span> <span class="variable">debugOutput</span>: <span class="type">String</span> </code></pre>
 </div>
+</div>
+    </section>
         </article>
     </main>
 

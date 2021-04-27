@@ -37,7 +37,11 @@
     <code class="name">Identified​Array</code>
 </h1>
 
-<html><body><pre class="highlight"><code><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">iOS</span> <span class="number literal">13.0</span>, <span class="keyword">OSX</span> <span class="number literal">10.15</span>, <span class="keyword">tvOS</span> <span class="number literal">13.0</span>, <span class="keyword">watchOS</span> <span class="number literal">6.0</span>, *) <span class="keyword">public</span> <span class="keyword">struct</span> <span class="type">IdentifiedArray</span>&lt;<span class="variable">ID</span>, <span class="variable">Element</span>&gt;: <span class="type">MutableCollection</span>, <span class="type">RandomAccessCollection</span> <span class="keyword">where</span> <span class="type">ID</span>: <span class="type">Hashable</span></code></pre></body></html>
+<div class="declaration">
+<pre class="highlight"><code><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">iOS</span> <span class="number literal">13.0</span>, <span class="keyword">OSX</span> <span class="number literal">10.15</span>, <span class="keyword">tvOS</span> <span class="number literal">13.0</span>, <span class="keyword">watchOS</span> <span class="number literal">6.0</span>, *)
+<span class="keyword">public</span> <span class="keyword">struct</span> <span class="type">IdentifiedArray</span>&lt;<span class="variable">ID</span>, <span class="variable">Element</span>&gt;: <span class="type">MutableCollection</span>, <span class="type">RandomAccessCollection</span>
+<span class="keyword">where</span> <span class="type">ID</span>: <span class="type">Hashable</span> </code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>An array of elements that can be identified by a given key path.</p>
 
@@ -57,9 +61,9 @@ your application may model a counter in an identifiable fashion:</p>
 
 <html><body><pre class="highlight"><code><span class="keyword">struct</span> <span class="type">AppState</span> { <span class="keyword">var</span> <span class="variable">counters</span> = <span class="variable">IdentifiedArrayOf</span>&lt;<span class="type">CounterState</span>&gt;() }
 <span class="keyword">enum</span> <span class="type">AppAction</span> { <span class="keyword">case</span> <span class="variable">counter</span>(<span class="variable">id</span>: <span class="type">UUID</span>, <span class="variable">action</span>: <span class="type">CounterAction</span>) }
-<span class="keyword">let</span> <span class="variable">appReducer</span> = <span class="variable">counterReducer</span>.<span class="type">forEach</span>(
-  <span class="variable">state</span>: \<span class="variable">AppState</span>.<span class="type">counters</span>,
-  <span class="variable">action</span>: /<span class="variable">AppAction</span>.<span class="type">counter</span>(<span class="variable">id</span>:<span class="type">action</span>:),
+<span class="keyword">let</span> <span class="variable">appReducer</span> = <span class="variable">counterReducer</span>.<span class="variable">forEach</span>(
+  <span class="variable">state</span>: \<span class="variable">AppState</span>.<span class="variable">counters</span>,
+  <span class="variable">action</span>: /<span class="variable">AppAction</span>.<span class="variable">counter</span>(<span class="variable">id</span>:<span class="type">action</span>:),
   <span class="variable">environment</span>: { <span class="variable">$0</span> }
 )
 </code></pre></body></html>
@@ -71,8 +75,8 @@ your application may model a counter in an identifiable fashion:</p>
   <span class="keyword">var</span> <span class="variable">body</span>: <span class="keyword">some</span> <span class="type">View</span> {
     <span class="variable">List</span> {
       <span class="variable">ForEachStore</span>(
-        <span class="keyword">self</span>.<span class="type">store</span>.<span class="type">scope</span>(<span class="variable">state</span>: \.<span class="type">counters</span>, <span class="variable">action</span>: <span class="type">AppAction</span>.<span class="type">counter</span>(<span class="variable">id</span>:<span class="type">action</span>:)),
-        <span class="variable">content</span>: <span class="type">CounterView</span>.<span class="type">init</span>(<span class="variable">store</span>:)
+        <span class="keyword">self</span>.<span class="variable">store</span>.<span class="variable">scope</span>(<span class="variable">state</span>: \.<span class="variable">counters</span>, <span class="variable">action</span>: <span class="type">AppAction</span>.<span class="variable">counter</span>(<span class="variable">id</span>:<span class="type">action</span>:)),
+        <span class="variable">content</span>: <span class="type">CounterView</span>.<span class="variable">init</span>(<span class="variable">store</span>:)
       )
     }
   }
@@ -87,128 +91,128 @@ your application may model a counter in an identifiable fashion:</p>
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Generated by graphviz version 2.40.1 (20161225.0304)
  -->
-<!-- Title: %3 Pages: 1 -->
-<svg width="1449pt" height="293pt"
- viewBox="0.00 0.00 1449.18 293.16" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<!-- Title: %73 Pages: 1 -->
+<svg width="1429pt" height="293pt"
+ viewBox="0.00 0.00 1428.97 293.16" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 289.161)">
-<title>%3</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-289.161 1445.1782,-289.161 1445.1782,4 -4,4"/>
+<title>%73</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-289.161 1424.9672,-289.161 1424.9672,4 -4,4"/>
 <!-- IdentifiedArray -->
 <g id="node1" class="node structure current">
 <title>IdentifiedArray</title>
 <g id="a_node1"><a xlink:href="/reactiveswift-composable-architecture/IdentifiedArray" xlink:title="IdentifiedArray">
-<path fill="none" stroke="#000000" stroke-width="3" d="M825.0274,-163.2537C825.0274,-163.2537 633.0274,-163.2537 633.0274,-163.2537 627.0274,-163.2537 621.0274,-157.2537 621.0274,-151.2537 621.0274,-151.2537 621.0274,-139.2537 621.0274,-139.2537 621.0274,-133.2537 627.0274,-127.2537 633.0274,-127.2537 633.0274,-127.2537 825.0274,-127.2537 825.0274,-127.2537 831.0274,-127.2537 837.0274,-133.2537 837.0274,-139.2537 837.0274,-139.2537 837.0274,-151.2537 837.0274,-151.2537 837.0274,-157.2537 831.0274,-163.2537 825.0274,-163.2537"/>
-<text text-anchor="middle" x="729.0274" y="-141.5537" font-family="Menlo" font-size="14.00" fill="#000000">IdentifiedArray</text>
+<path fill="none" stroke="#000000" stroke-width="3" d="M808.1931,-163.2537C808.1931,-163.2537 616.1931,-163.2537 616.1931,-163.2537 610.1931,-163.2537 604.1931,-157.2537 604.1931,-151.2537 604.1931,-151.2537 604.1931,-139.2537 604.1931,-139.2537 604.1931,-133.2537 610.1931,-127.2537 616.1931,-127.2537 616.1931,-127.2537 808.1931,-127.2537 808.1931,-127.2537 814.1931,-127.2537 820.1931,-133.2537 820.1931,-139.2537 820.1931,-139.2537 820.1931,-151.2537 820.1931,-151.2537 820.1931,-157.2537 814.1931,-163.2537 808.1931,-163.2537"/>
+<text text-anchor="middle" x="712.1931" y="-141.5537" font-family="Menlo" font-size="14.00" fill="#000000">IdentifiedArray</text>
 </a>
 </g>
 </g>
-<!-- CustomStringConvertible -->
-<g id="node2" class="node unknown">
-<title>CustomStringConvertible</title>
-<path fill="none" stroke="#000000" d="M1385.2893,-218.8441C1385.2893,-218.8441 1193.2893,-218.8441 1193.2893,-218.8441 1187.2893,-218.8441 1181.2893,-212.8441 1181.2893,-206.8441 1181.2893,-206.8441 1181.2893,-194.8441 1181.2893,-194.8441 1181.2893,-188.8441 1187.2893,-182.8441 1193.2893,-182.8441 1193.2893,-182.8441 1385.2893,-182.8441 1385.2893,-182.8441 1391.2893,-182.8441 1397.2893,-188.8441 1397.2893,-194.8441 1397.2893,-194.8441 1397.2893,-206.8441 1397.2893,-206.8441 1397.2893,-212.8441 1391.2893,-218.8441 1385.2893,-218.8441"/>
-<text text-anchor="middle" x="1289.2893" y="-197.1441" font-family="Menlo" font-size="14.00" fill="#000000">CustomStringConvertible</text>
-</g>
-<!-- IdentifiedArray&#45;&gt;CustomStringConvertible -->
-<g id="edge8" class="edge conformsTo">
-<title>IdentifiedArray&#45;&gt;CustomStringConvertible</title>
-<path fill="none" stroke="#000000" d="M837.0515,-155.9721C932.8134,-165.4738 1072.3851,-179.3224 1171.0976,-189.1169"/>
-<polygon fill="#000000" stroke="#000000" points="1170.8232,-192.6068 1181.1199,-190.1113 1171.5144,-185.641 1170.8232,-192.6068"/>
-</g>
 <!-- CustomReflectable -->
-<g id="node3" class="node unknown">
+<g id="node2" class="node unknown">
 <title>CustomReflectable</title>
-<path fill="none" stroke="#000000" d="M776.3029,-36C776.3029,-36 584.3029,-36 584.3029,-36 578.3029,-36 572.3029,-30 572.3029,-24 572.3029,-24 572.3029,-12 572.3029,-12 572.3029,-6 578.3029,0 584.3029,0 584.3029,0 776.3029,0 776.3029,0 782.3029,0 788.3029,-6 788.3029,-12 788.3029,-12 788.3029,-24 788.3029,-24 788.3029,-30 782.3029,-36 776.3029,-36"/>
-<text text-anchor="middle" x="680.3029" y="-14.3" font-family="Menlo" font-size="14.00" fill="#000000">CustomReflectable</text>
+<path fill="none" stroke="#000000" d="M1353.2679,-218.8441C1353.2679,-218.8441 1161.2679,-218.8441 1161.2679,-218.8441 1155.2679,-218.8441 1149.2679,-212.8441 1149.2679,-206.8441 1149.2679,-206.8441 1149.2679,-194.8441 1149.2679,-194.8441 1149.2679,-188.8441 1155.2679,-182.8441 1161.2679,-182.8441 1161.2679,-182.8441 1353.2679,-182.8441 1353.2679,-182.8441 1359.2679,-182.8441 1365.2679,-188.8441 1365.2679,-194.8441 1365.2679,-194.8441 1365.2679,-206.8441 1365.2679,-206.8441 1365.2679,-212.8441 1359.2679,-218.8441 1353.2679,-218.8441"/>
+<text text-anchor="middle" x="1257.2679" y="-197.1441" font-family="Menlo" font-size="14.00" fill="#000000">CustomReflectable</text>
 </g>
 <!-- IdentifiedArray&#45;&gt;CustomReflectable -->
-<g id="edge1" class="edge conformsTo">
+<g id="edge2" class="edge conformsTo">
 <title>IdentifiedArray&#45;&gt;CustomReflectable</title>
-<path fill="none" stroke="#000000" d="M722.0464,-127.0214C713.9055,-105.7598 700.3616,-70.3873 690.9166,-45.7199"/>
-<polygon fill="#000000" stroke="#000000" points="694.1154,-44.2858 687.2709,-36.1985 687.5782,-46.7889 694.1154,-44.2858"/>
+<path fill="none" stroke="#000000" d="M820.208,-156.2698C912.1399,-165.6456 1043.9835,-179.0919 1138.7893,-188.7609"/>
+<polygon fill="#000000" stroke="#000000" points="1138.698,-192.2696 1149.0015,-189.8024 1139.4082,-185.3058 1138.698,-192.2696"/>
 </g>
-<!-- CustomDebugStringConvertible -->
+<!-- Decodable -->
+<g id="node3" class="node unknown">
+<title>Decodable</title>
+<path fill="none" stroke="#000000" d="M760.7894,-36C760.7894,-36 568.7894,-36 568.7894,-36 562.7894,-36 556.7894,-30 556.7894,-24 556.7894,-24 556.7894,-12 556.7894,-12 556.7894,-6 562.7894,0 568.7894,0 568.7894,0 760.7894,0 760.7894,0 766.7894,0 772.7894,-6 772.7894,-12 772.7894,-12 772.7894,-24 772.7894,-24 772.7894,-30 766.7894,-36 760.7894,-36"/>
+<text text-anchor="middle" x="664.7894" y="-14.3" font-family="Menlo" font-size="14.00" fill="#000000">Decodable</text>
+</g>
+<!-- IdentifiedArray&#45;&gt;Decodable -->
+<g id="edge1" class="edge conformsTo">
+<title>IdentifiedArray&#45;&gt;Decodable</title>
+<path fill="none" stroke="#000000" d="M705.4013,-127.0214C697.4811,-105.7598 684.3044,-70.3873 675.1154,-45.7199"/>
+<polygon fill="#000000" stroke="#000000" points="678.3393,-44.3477 671.5686,-36.1985 671.7796,-46.7913 678.3393,-44.3477"/>
+</g>
+<!-- Encodable -->
 <g id="node4" class="node unknown">
-<title>CustomDebugStringConvertible</title>
-<path fill="none" stroke="#000000" d="M322.3994,-235.7738C322.3994,-235.7738 104.3994,-235.7738 104.3994,-235.7738 98.3994,-235.7738 92.3994,-229.7738 92.3994,-223.7738 92.3994,-223.7738 92.3994,-211.7738 92.3994,-211.7738 92.3994,-205.7738 98.3994,-199.7738 104.3994,-199.7738 104.3994,-199.7738 322.3994,-199.7738 322.3994,-199.7738 328.3994,-199.7738 334.3994,-205.7738 334.3994,-211.7738 334.3994,-211.7738 334.3994,-223.7738 334.3994,-223.7738 334.3994,-229.7738 328.3994,-235.7738 322.3994,-235.7738"/>
-<text text-anchor="middle" x="213.3994" y="-214.0738" font-family="Menlo" font-size="14.00" fill="#000000">CustomDebugStringConvertible</text>
+<title>Encodable</title>
+<path fill="none" stroke="#000000" d="M306.5423,-235.7738C306.5423,-235.7738 114.5423,-235.7738 114.5423,-235.7738 108.5423,-235.7738 102.5423,-229.7738 102.5423,-223.7738 102.5423,-223.7738 102.5423,-211.7738 102.5423,-211.7738 102.5423,-205.7738 108.5423,-199.7738 114.5423,-199.7738 114.5423,-199.7738 306.5423,-199.7738 306.5423,-199.7738 312.5423,-199.7738 318.5423,-205.7738 318.5423,-211.7738 318.5423,-211.7738 318.5423,-223.7738 318.5423,-223.7738 318.5423,-229.7738 312.5423,-235.7738 306.5423,-235.7738"/>
+<text text-anchor="middle" x="210.5423" y="-214.0738" font-family="Menlo" font-size="14.00" fill="#000000">Encodable</text>
 </g>
-<!-- IdentifiedArray&#45;&gt;CustomDebugStringConvertible -->
+<!-- IdentifiedArray&#45;&gt;Encodable -->
 <g id="edge6" class="edge conformsTo">
-<title>IdentifiedArray&#45;&gt;CustomDebugStringConvertible</title>
-<path fill="none" stroke="#000000" d="M620.9349,-160.4563C540.4031,-171.7826 430.045,-187.3039 344.4787,-199.3383"/>
-<polygon fill="#000000" stroke="#000000" points="343.8501,-195.8922 334.435,-200.7509 344.825,-202.8239 343.8501,-195.8922"/>
+<title>IdentifiedArray&#45;&gt;Encodable</title>
+<path fill="none" stroke="#000000" d="M603.96,-160.9002C522.8637,-172.6237 411.9884,-188.6522 328.6095,-200.7057"/>
+<polygon fill="#000000" stroke="#000000" points="327.9778,-197.2605 318.5815,-202.1554 328.9794,-204.1885 327.9778,-197.2605"/>
 </g>
 <!-- RangeReplaceableCollection -->
 <g id="node5" class="node unknown">
 <title>RangeReplaceableCollection</title>
-<path fill="none" stroke="#000000" d="M1081.285,-280.1283C1081.285,-280.1283 886.285,-280.1283 886.285,-280.1283 880.285,-280.1283 874.285,-274.1283 874.285,-268.1283 874.285,-268.1283 874.285,-256.1283 874.285,-256.1283 874.285,-250.1283 880.285,-244.1283 886.285,-244.1283 886.285,-244.1283 1081.285,-244.1283 1081.285,-244.1283 1087.285,-244.1283 1093.285,-250.1283 1093.285,-256.1283 1093.285,-256.1283 1093.285,-268.1283 1093.285,-268.1283 1093.285,-274.1283 1087.285,-280.1283 1081.285,-280.1283"/>
-<text text-anchor="middle" x="983.785" y="-258.4283" font-family="Menlo" font-size="14.00" fill="#000000">RangeReplaceableCollection</text>
+<path fill="none" stroke="#000000" d="M1057.545,-280.1283C1057.545,-280.1283 862.545,-280.1283 862.545,-280.1283 856.545,-280.1283 850.545,-274.1283 850.545,-268.1283 850.545,-268.1283 850.545,-256.1283 850.545,-256.1283 850.545,-250.1283 856.545,-244.1283 862.545,-244.1283 862.545,-244.1283 1057.545,-244.1283 1057.545,-244.1283 1063.545,-244.1283 1069.545,-250.1283 1069.545,-256.1283 1069.545,-256.1283 1069.545,-268.1283 1069.545,-268.1283 1069.545,-274.1283 1063.545,-280.1283 1057.545,-280.1283"/>
+<text text-anchor="middle" x="960.045" y="-258.4283" font-family="Menlo" font-size="14.00" fill="#000000">RangeReplaceableCollection</text>
 </g>
 <!-- IdentifiedArray&#45;&gt;RangeReplaceableCollection -->
-<g id="edge9" class="edge conformsTo">
+<g id="edge4" class="edge conformsTo">
 <title>IdentifiedArray&#45;&gt;RangeReplaceableCollection</title>
-<path fill="none" stroke="#000000" d="M768.275,-163.2592C813.1565,-183.8494 886.6699,-217.575 935.1471,-239.8148"/>
-<polygon fill="#000000" stroke="#000000" points="933.9442,-243.1137 944.4928,-244.1023 936.8631,-236.7512 933.9442,-243.1137"/>
-</g>
-<!-- Encodable -->
-<g id="node6" class="node unknown">
-<title>Encodable</title>
-<path fill="none" stroke="#000000" d="M656.4588,-285.161C656.4588,-285.161 464.4588,-285.161 464.4588,-285.161 458.4588,-285.161 452.4588,-279.161 452.4588,-273.161 452.4588,-273.161 452.4588,-261.161 452.4588,-261.161 452.4588,-255.161 458.4588,-249.161 464.4588,-249.161 464.4588,-249.161 656.4588,-249.161 656.4588,-249.161 662.4588,-249.161 668.4588,-255.161 668.4588,-261.161 668.4588,-261.161 668.4588,-273.161 668.4588,-273.161 668.4588,-279.161 662.4588,-285.161 656.4588,-285.161"/>
-<text text-anchor="middle" x="560.4588" y="-263.461" font-family="Menlo" font-size="14.00" fill="#000000">Encodable</text>
-</g>
-<!-- IdentifiedArray&#45;&gt;Encodable -->
-<g id="edge7" class="edge conformsTo">
-<title>IdentifiedArray&#45;&gt;Encodable</title>
-<path fill="none" stroke="#000000" d="M703.791,-163.5045C674.5349,-184.6622 626.2038,-219.6148 593.856,-243.0084"/>
-<polygon fill="#000000" stroke="#000000" points="591.6441,-240.2887 585.592,-248.9849 595.7461,-245.9609 591.6441,-240.2887"/>
+<path fill="none" stroke="#000000" d="M750.3768,-163.2592C794.0418,-183.8494 865.5624,-217.575 912.7255,-239.8148"/>
+<polygon fill="#000000" stroke="#000000" points="911.2803,-243.0029 921.8179,-244.1023 914.2659,-236.6715 911.2803,-243.0029"/>
 </g>
 <!-- MutableCollection -->
-<g id="node7" class="node unknown">
+<g id="node6" class="node unknown">
 <title>MutableCollection</title>
-<path fill="none" stroke="#000000" d="M204,-150.7357C204,-150.7357 12,-150.7357 12,-150.7357 6,-150.7357 0,-144.7357 0,-138.7357 0,-138.7357 0,-126.7357 0,-126.7357 0,-120.7357 6,-114.7357 12,-114.7357 12,-114.7357 204,-114.7357 204,-114.7357 210,-114.7357 216,-120.7357 216,-126.7357 216,-126.7357 216,-138.7357 216,-138.7357 216,-144.7357 210,-150.7357 204,-150.7357"/>
-<text text-anchor="middle" x="108" y="-129.0357" font-family="Menlo" font-size="14.00" fill="#000000">MutableCollection</text>
+<path fill="none" stroke="#000000" d="M644.1939,-285.161C644.1939,-285.161 452.1939,-285.161 452.1939,-285.161 446.1939,-285.161 440.1939,-279.161 440.1939,-273.161 440.1939,-273.161 440.1939,-261.161 440.1939,-261.161 440.1939,-255.161 446.1939,-249.161 452.1939,-249.161 452.1939,-249.161 644.1939,-249.161 644.1939,-249.161 650.1939,-249.161 656.1939,-255.161 656.1939,-261.161 656.1939,-261.161 656.1939,-273.161 656.1939,-273.161 656.1939,-279.161 650.1939,-285.161 644.1939,-285.161"/>
+<text text-anchor="middle" x="548.1939" y="-263.461" font-family="Menlo" font-size="14.00" fill="#000000">MutableCollection</text>
 </g>
 <!-- IdentifiedArray&#45;&gt;MutableCollection -->
-<g id="edge4" class="edge conformsTo">
+<g id="edge5" class="edge conformsTo">
 <title>IdentifiedArray&#45;&gt;MutableCollection</title>
-<path fill="none" stroke="#000000" d="M620.8527,-143.0732C510.6283,-140.8514 340.1547,-137.4152 226.3792,-135.1218"/>
-<polygon fill="#000000" stroke="#000000" points="226.3043,-131.6197 216.2357,-134.9174 226.1631,-138.6183 226.3043,-131.6197"/>
+<path fill="none" stroke="#000000" d="M687.6408,-163.5045C659.1777,-184.6622 612.1568,-219.6148 580.6859,-243.0084"/>
+<polygon fill="#000000" stroke="#000000" points="578.5834,-240.2101 572.6459,-248.9849 582.7595,-245.8281 578.5834,-240.2101"/>
 </g>
-<!-- RandomAccessCollection -->
+<!-- CustomStringConvertible -->
+<g id="node7" class="node unknown">
+<title>CustomStringConvertible</title>
+<path fill="none" stroke="#000000" d="M204,-150.7357C204,-150.7357 12,-150.7357 12,-150.7357 6,-150.7357 0,-144.7357 0,-138.7357 0,-138.7357 0,-126.7357 0,-126.7357 0,-120.7357 6,-114.7357 12,-114.7357 12,-114.7357 204,-114.7357 204,-114.7357 210,-114.7357 216,-120.7357 216,-126.7357 216,-126.7357 216,-138.7357 216,-138.7357 216,-144.7357 210,-150.7357 204,-150.7357"/>
+<text text-anchor="middle" x="108" y="-129.0357" font-family="Menlo" font-size="14.00" fill="#000000">CustomStringConvertible</text>
+</g>
+<!-- IdentifiedArray&#45;&gt;CustomStringConvertible -->
+<g id="edge3" class="edge conformsTo">
+<title>IdentifiedArray&#45;&gt;CustomStringConvertible</title>
+<path fill="none" stroke="#000000" d="M604.1755,-143.0157C497.8592,-140.813 335.9287,-137.458 226.2183,-135.185"/>
+<polygon fill="#000000" stroke="#000000" points="226.1697,-131.6833 216.0993,-134.9753 226.0246,-138.6818 226.1697,-131.6833"/>
+</g>
+<!-- CustomDebugStringConvertible -->
 <g id="node8" class="node unknown">
-<title>RandomAccessCollection</title>
-<path fill="none" stroke="#000000" d="M1429.1782,-132.0135C1429.1782,-132.0135 1237.1782,-132.0135 1237.1782,-132.0135 1231.1782,-132.0135 1225.1782,-126.0135 1225.1782,-120.0135 1225.1782,-120.0135 1225.1782,-108.0135 1225.1782,-108.0135 1225.1782,-102.0135 1231.1782,-96.0135 1237.1782,-96.0135 1237.1782,-96.0135 1429.1782,-96.0135 1429.1782,-96.0135 1435.1782,-96.0135 1441.1782,-102.0135 1441.1782,-108.0135 1441.1782,-108.0135 1441.1782,-120.0135 1441.1782,-120.0135 1441.1782,-126.0135 1435.1782,-132.0135 1429.1782,-132.0135"/>
-<text text-anchor="middle" x="1333.1782" y="-110.3135" font-family="Menlo" font-size="14.00" fill="#000000">RandomAccessCollection</text>
+<title>CustomDebugStringConvertible</title>
+<path fill="none" stroke="#000000" d="M1408.9672,-132.0135C1408.9672,-132.0135 1190.9672,-132.0135 1190.9672,-132.0135 1184.9672,-132.0135 1178.9672,-126.0135 1178.9672,-120.0135 1178.9672,-120.0135 1178.9672,-108.0135 1178.9672,-108.0135 1178.9672,-102.0135 1184.9672,-96.0135 1190.9672,-96.0135 1190.9672,-96.0135 1408.9672,-96.0135 1408.9672,-96.0135 1414.9672,-96.0135 1420.9672,-102.0135 1420.9672,-108.0135 1420.9672,-108.0135 1420.9672,-120.0135 1420.9672,-120.0135 1420.9672,-126.0135 1414.9672,-132.0135 1408.9672,-132.0135"/>
+<text text-anchor="middle" x="1299.9672" y="-110.3135" font-family="Menlo" font-size="14.00" fill="#000000">CustomDebugStringConvertible</text>
 </g>
-<!-- IdentifiedArray&#45;&gt;RandomAccessCollection -->
-<g id="edge2" class="edge conformsTo">
-<title>IdentifiedArray&#45;&gt;RandomAccessCollection</title>
-<path fill="none" stroke="#000000" d="M837.0375,-139.6686C943.3464,-134.1714 1105.2655,-125.7987 1214.9682,-120.126"/>
-<polygon fill="#000000" stroke="#000000" points="1215.2806,-123.6146 1225.0865,-119.6028 1214.9191,-116.624 1215.2806,-123.6146"/>
+<!-- IdentifiedArray&#45;&gt;CustomDebugStringConvertible -->
+<g id="edge7" class="edge conformsTo">
+<title>IdentifiedArray&#45;&gt;CustomDebugStringConvertible</title>
+<path fill="none" stroke="#000000" d="M820.3422,-139.5056C918.6298,-134.2816 1063.8829,-126.5614 1168.7698,-120.9866"/>
+<polygon fill="#000000" stroke="#000000" points="1168.9911,-124.4799 1178.7912,-120.454 1168.6195,-117.4898 1168.9911,-124.4799"/>
 </g>
 <!-- ExpressibleByArrayLiteral -->
 <g id="node9" class="node unknown">
 <title>ExpressibleByArrayLiteral</title>
-<path fill="none" stroke="#000000" d="M389.7895,-72.5449C389.7895,-72.5449 197.7895,-72.5449 197.7895,-72.5449 191.7895,-72.5449 185.7895,-66.5449 185.7895,-60.5449 185.7895,-60.5449 185.7895,-48.5449 185.7895,-48.5449 185.7895,-42.5449 191.7895,-36.5449 197.7895,-36.5449 197.7895,-36.5449 389.7895,-36.5449 389.7895,-36.5449 395.7895,-36.5449 401.7895,-42.5449 401.7895,-48.5449 401.7895,-48.5449 401.7895,-60.5449 401.7895,-60.5449 401.7895,-66.5449 395.7895,-72.5449 389.7895,-72.5449"/>
-<text text-anchor="middle" x="293.7895" y="-50.8449" font-family="Menlo" font-size="14.00" fill="#000000">ExpressibleByArrayLiteral</text>
+<path fill="none" stroke="#000000" d="M384.7533,-72.5449C384.7533,-72.5449 192.7533,-72.5449 192.7533,-72.5449 186.7533,-72.5449 180.7533,-66.5449 180.7533,-60.5449 180.7533,-60.5449 180.7533,-48.5449 180.7533,-48.5449 180.7533,-42.5449 186.7533,-36.5449 192.7533,-36.5449 192.7533,-36.5449 384.7533,-36.5449 384.7533,-36.5449 390.7533,-36.5449 396.7533,-42.5449 396.7533,-48.5449 396.7533,-48.5449 396.7533,-60.5449 396.7533,-60.5449 396.7533,-66.5449 390.7533,-72.5449 384.7533,-72.5449"/>
+<text text-anchor="middle" x="288.7533" y="-50.8449" font-family="Menlo" font-size="14.00" fill="#000000">ExpressibleByArrayLiteral</text>
 </g>
 <!-- IdentifiedArray&#45;&gt;ExpressibleByArrayLiteral -->
-<g id="edge3" class="edge conformsTo">
+<g id="edge9" class="edge conformsTo">
 <title>IdentifiedArray&#45;&gt;ExpressibleByArrayLiteral</title>
-<path fill="none" stroke="#000000" d="M642.518,-127.2241C569.7994,-112.0687 465.9414,-90.4234 390.4924,-74.699"/>
-<polygon fill="#000000" stroke="#000000" points="391.0108,-71.2319 380.507,-72.6179 389.5826,-78.0846 391.0108,-71.2319"/>
+<path fill="none" stroke="#000000" d="M628.0288,-127.2241C557.4257,-112.0996 456.6509,-90.5118 383.2846,-74.7953"/>
+<polygon fill="#000000" stroke="#000000" points="383.6315,-71.2903 373.1202,-72.6179 382.1652,-78.135 383.6315,-71.2903"/>
 </g>
-<!-- Decodable -->
+<!-- RandomAccessCollection -->
 <g id="node10" class="node unknown">
-<title>Decodable</title>
-<path fill="none" stroke="#000000" d="M1188.3273,-59.8511C1188.3273,-59.8511 996.3273,-59.8511 996.3273,-59.8511 990.3273,-59.8511 984.3273,-53.8511 984.3273,-47.8511 984.3273,-47.8511 984.3273,-35.8511 984.3273,-35.8511 984.3273,-29.8511 990.3273,-23.8511 996.3273,-23.8511 996.3273,-23.8511 1188.3273,-23.8511 1188.3273,-23.8511 1194.3273,-23.8511 1200.3273,-29.8511 1200.3273,-35.8511 1200.3273,-35.8511 1200.3273,-47.8511 1200.3273,-47.8511 1200.3273,-53.8511 1194.3273,-59.8511 1188.3273,-59.8511"/>
-<text text-anchor="middle" x="1092.3273" y="-38.1511" font-family="Menlo" font-size="14.00" fill="#000000">Decodable</text>
+<title>RandomAccessCollection</title>
+<path fill="none" stroke="#000000" d="M1161.645,-59.8511C1161.645,-59.8511 969.645,-59.8511 969.645,-59.8511 963.645,-59.8511 957.645,-53.8511 957.645,-47.8511 957.645,-47.8511 957.645,-35.8511 957.645,-35.8511 957.645,-29.8511 963.645,-23.8511 969.645,-23.8511 969.645,-23.8511 1161.645,-23.8511 1161.645,-23.8511 1167.645,-23.8511 1173.645,-29.8511 1173.645,-35.8511 1173.645,-35.8511 1173.645,-47.8511 1173.645,-47.8511 1173.645,-53.8511 1167.645,-59.8511 1161.645,-59.8511"/>
+<text text-anchor="middle" x="1065.645" y="-38.1511" font-family="Menlo" font-size="14.00" fill="#000000">RandomAccessCollection</text>
 </g>
-<!-- IdentifiedArray&#45;&gt;Decodable -->
-<g id="edge5" class="edge conformsTo">
-<title>IdentifiedArray&#45;&gt;Decodable</title>
-<path fill="none" stroke="#000000" d="M792.3094,-127.2423C855.4447,-109.2727 952.3699,-81.6858 1018.8657,-62.7598"/>
-<polygon fill="#000000" stroke="#000000" points="1020.1972,-66.0199 1028.8571,-59.916 1018.2809,-59.2873 1020.1972,-66.0199"/>
+<!-- IdentifiedArray&#45;&gt;RandomAccessCollection -->
+<g id="edge8" class="edge conformsTo">
+<title>IdentifiedArray&#45;&gt;RandomAccessCollection</title>
+<path fill="none" stroke="#000000" d="M773.7598,-127.2423C835.1836,-109.2727 929.4815,-81.6858 994.1747,-62.7598"/>
+<polygon fill="#000000" stroke="#000000" points="995.2803,-66.0831 1003.8953,-59.916 993.3148,-59.3647 995.2803,-66.0831"/>
 </g>
 </g>
 </svg>
@@ -236,7 +240,10 @@ your application may model a counter in an identifiable fashion:</p>
     <h3>
         <code>init(_:​id:​)</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">init</span>&lt;<span class="variable">S</span>&gt;(<span class="keyword">_</span> <span class="variable">elements</span>: <span class="type">S</span>, <span class="variable">id</span>: <span class="type">KeyPath</span>&lt;<span class="type">Element</span>, <span class="type">ID</span>&gt;) <span class="keyword">where</span> <span class="type">S</span>: <span class="type">Sequence</span>, <span class="type">S</span>.<span class="type">Element</span> == <span class="type">Element</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">init</span>&lt;<span class="variable">S</span>&gt;(<span class="keyword">_</span> <span class="variable">elements</span>: <span class="type">S</span>, <span class="variable">id</span>: <span class="type">KeyPath</span>&lt;<span class="type">Element</span>, <span class="type">ID</span>&gt;)
+  <span class="keyword">where</span> <span class="type">S</span>: <span class="type">Sequence</span>, <span class="type">S</span>.<span class="type">Element</span> == <span class="type">Element</span> </code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Initializes an identified array with a sequence of elements and a key
 path to an element's identifier.</p>
@@ -272,7 +279,9 @@ path to an element's identifier.</p>
     <h3>
         <code>init(id:​)</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">init</span>(<span class="variable">id</span>: <span class="type">KeyPath</span>&lt;<span class="type">Element</span>, <span class="type">ID</span>&gt;)</code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">init</span>(<span class="variable">id</span>: <span class="type">KeyPath</span>&lt;<span class="type">Element</span>, <span class="type">ID</span>&gt;) </code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Initializes an empty identified array with a key path to an element's
 identifier.</p>
@@ -306,7 +315,9 @@ identifier.</p>
     <h3>
         <code>id</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">let</span> <span class="variable">id</span>: <span class="type">KeyPath</span>&lt;<span class="type">Element</span>, <span class="type">ID</span>&gt;</code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">id</span>: <span class="type">KeyPath</span>&lt;<span class="type">Element</span>, <span class="type">ID</span>&gt;</code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>A key path to a value that identifies an element.</p>
 
@@ -316,7 +327,9 @@ identifier.</p>
     <h3>
         <code>ids</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">ids</span>: [<span class="type">ID</span>]</code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">private</span>(<span class="variable">set</span>) <span class="keyword">var</span> <span class="variable">ids</span>: [<span class="type">ID</span>]</code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>A raw array of each element's identifier.</p>
 
@@ -326,7 +339,9 @@ identifier.</p>
     <h3>
         <code>elements</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">elements</span>: [<span class="type">Element</span>]</code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">var</span> <span class="variable">elements</span>: [<span class="type">Element</span>] </code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>A raw array of the underlying elements.</p>
 
@@ -336,31 +351,41 @@ identifier.</p>
     <h3>
         <code>start​Index</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">startIndex</span>: <span class="type">Int</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">var</span> <span class="variable">startIndex</span>: <span class="type">Int</span> </code></pre>
+</div>
 </div>
 <div role="article" class="variable" id="identifiedarray.endindex">
     <h3>
         <code>end​Index</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">endIndex</span>: <span class="type">Int</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">var</span> <span class="variable">endIndex</span>: <span class="type">Int</span> </code></pre>
+</div>
 </div>
 <div role="article" class="variable" id="identifiedarray.debugdescription">
     <h3>
         <code>debug​Description</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">debugDescription</span>: <span class="type">String</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">var</span> <span class="variable">debugDescription</span>: <span class="type">String</span> </code></pre>
+</div>
 </div>
 <div role="article" class="variable" id="identifiedarray.custommirror">
     <h3>
         <code>custom​Mirror</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">customMirror</span>: <span class="type">Mirror</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">var</span> <span class="variable">customMirror</span>: <span class="type">Mirror</span> </code></pre>
+</div>
 </div>
 <div role="article" class="variable" id="identifiedarray.description">
     <h3>
         <code>description</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">description</span>: <span class="type">String</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">var</span> <span class="variable">description</span>: <span class="type">String</span> </code></pre>
+</div>
 </div>
     </section>
     <section id="methods">
@@ -370,31 +395,44 @@ identifier.</p>
     <h3>
         <code>index(after:​)</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">index</span>(<span class="variable">after</span> <span class="variable">i</span>: <span class="type">Int</span>) -&gt; <span class="type">Int</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">index</span>(<span class="variable">after</span> <span class="variable">i</span>: <span class="type">Int</span>) -&gt; <span class="type">Int</span> </code></pre>
+</div>
 </div>
 <div role="article" class="function" id="identifiedarray.index(before:)">
     <h3>
         <code>index(before:​)</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">index</span>(<span class="variable">before</span> <span class="variable">i</span>: <span class="type">Int</span>) -&gt; <span class="type">Int</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">index</span>(<span class="variable">before</span> <span class="variable">i</span>: <span class="type">Int</span>) -&gt; <span class="type">Int</span> </code></pre>
+</div>
 </div>
 <div role="article" class="function" id="identifiedarray.insert(_:at:)">
     <h3>
         <code>insert(_:​at:​)</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="attribute">mutating</span> <span class="keyword">func</span> <span class="function">insert</span>(<span class="keyword">_</span> <span class="variable">newElement</span>: <span class="type">Element</span>, <span class="variable">at</span> <span class="variable">i</span>: <span class="type">Int</span>)</code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="attribute">mutating</span> <span class="keyword">func</span> <span class="function">insert</span>(<span class="keyword">_</span> <span class="variable">newElement</span>: <span class="type">Element</span>, <span class="variable">at</span> <span class="variable">i</span>: <span class="type">Int</span>) </code></pre>
+</div>
 </div>
 <div role="article" class="function" id="identifiedarray.insert(contentsof:at:)">
     <h3>
         <code>insert(contents​Of:​at:​)</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="attribute">mutating</span> <span class="keyword">func</span> <span class="function">insert</span>&lt;<span class="variable">C</span>&gt;(<span class="variable">contentsOf</span> <span class="variable">newElements</span>: <span class="type">C</span>, <span class="variable">at</span> <span class="variable">i</span>: <span class="type">Int</span>) <span class="keyword">where</span> <span class="type">C</span>: <span class="type">Collection</span>, <span class="type">Element</span> == <span class="type">C</span>.<span class="type">Element</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="attribute">mutating</span> <span class="keyword">func</span> <span class="function">insert</span>&lt;<span class="variable">C</span>&gt;(
+    <span class="variable">contentsOf</span> <span class="variable">newElements</span>: <span class="type">C</span>, <span class="variable">at</span> <span class="variable">i</span>: <span class="type">Int</span>
+  ) <span class="keyword">where</span> <span class="type">C</span>: <span class="type">Collection</span>, <span class="type">Element</span> == <span class="type">C</span>.<span class="type">Element</span> </code></pre>
+</div>
 </div>
 <div role="article" class="function" id="identifiedarray.remove(id:)">
     <h3>
         <code>remove(id:​)</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="attribute">@</span><span class="attribute">discardableResult</span> <span class="keyword">public</span> <span class="attribute">mutating</span> <span class="keyword">func</span> <span class="function">remove</span>(<span class="variable">id</span>: <span class="type">ID</span>) -&gt; <span class="type">Element</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="attribute">@</span><span class="attribute">discardableResult</span>
+  <span class="keyword">public</span> <span class="attribute">mutating</span> <span class="keyword">func</span> <span class="function">remove</span>(<span class="variable">id</span>: <span class="type">ID</span>) -&gt; <span class="type">Element</span> </code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Removes and returns the element with the specified identifier.</p>
 
@@ -426,49 +464,66 @@ identifier.</p>
     <h3>
         <code>remove(at:​)</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="attribute">@</span><span class="attribute">discardableResult</span> <span class="keyword">public</span> <span class="attribute">mutating</span> <span class="keyword">func</span> <span class="function">remove</span>(<span class="variable">at</span> <span class="variable">position</span>: <span class="type">Int</span>) -&gt; <span class="type">Element</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="attribute">@</span><span class="attribute">discardableResult</span>
+  <span class="keyword">public</span> <span class="attribute">mutating</span> <span class="keyword">func</span> <span class="function">remove</span>(<span class="variable">at</span> <span class="variable">position</span>: <span class="type">Int</span>) -&gt; <span class="type">Element</span> </code></pre>
+</div>
 </div>
 <div role="article" class="function" id="identifiedarray.removeall(where:)">
     <h3>
         <code>remove​All(where:​)</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="attribute">mutating</span> <span class="keyword">func</span> <span class="function">removeAll</span>(<span class="variable">where</span> <span class="variable">shouldBeRemoved</span>: (<span class="type">Element</span>) <span class="keyword">throws</span> -&gt; <span class="type">Bool</span>) <span class="keyword">rethrows</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="attribute">mutating</span> <span class="keyword">func</span> <span class="function">removeAll</span>(<span class="variable">where</span> <span class="variable">shouldBeRemoved</span>: (<span class="type">Element</span>) <span class="keyword">throws</span> -&gt; <span class="type">Bool</span>) <span class="keyword">rethrows</span> </code></pre>
+</div>
 </div>
 <div role="article" class="function" id="identifiedarray.remove(atoffsets:)">
     <h3>
         <code>remove(at​Offsets:​)</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="attribute">mutating</span> <span class="keyword">func</span> <span class="function">remove</span>(<span class="variable">atOffsets</span> <span class="variable">offsets</span>: <span class="type">IndexSet</span>)</code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="attribute">mutating</span> <span class="keyword">func</span> <span class="function">remove</span>(<span class="variable">atOffsets</span> <span class="variable">offsets</span>: <span class="type">IndexSet</span>) </code></pre>
+</div>
 </div>
 <div role="article" class="function" id="identifiedarray.move(fromoffsets:tooffset:)">
     <h3>
         <code>move(from​Offsets:​to​Offset:​)</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="attribute">mutating</span> <span class="keyword">func</span> <span class="function">move</span>(<span class="variable">fromOffsets</span> <span class="variable">source</span>: <span class="type">IndexSet</span>, <span class="variable">toOffset</span> <span class="variable">destination</span>: <span class="type">Int</span>)</code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="attribute">mutating</span> <span class="keyword">func</span> <span class="function">move</span>(<span class="variable">fromOffsets</span> <span class="variable">source</span>: <span class="type">IndexSet</span>, <span class="variable">toOffset</span> <span class="variable">destination</span>: <span class="type">Int</span>) </code></pre>
+</div>
 </div>
 <div role="article" class="function" id="identifiedarray.sort(by:)">
     <h3>
         <code>sort(by:​)</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="attribute">mutating</span> <span class="keyword">func</span> <span class="function">sort</span>(<span class="variable">by</span> <span class="variable">areInIncreasingOrder</span>: (<span class="type">Element</span>, <span class="type">Element</span>) <span class="keyword">throws</span> -&gt; <span class="type">Bool</span>) <span class="keyword">rethrows</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="attribute">mutating</span> <span class="keyword">func</span> <span class="function">sort</span>(<span class="variable">by</span> <span class="variable">areInIncreasingOrder</span>: (<span class="type">Element</span>, <span class="type">Element</span>) <span class="keyword">throws</span> -&gt; <span class="type">Bool</span>) <span class="keyword">rethrows</span> </code></pre>
+</div>
 </div>
 <div role="article" class="function" id="identifiedarray.shuffle(using:)">
     <h3>
         <code>shuffle(using:​)</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="attribute">mutating</span> <span class="keyword">func</span> <span class="function">shuffle</span>&lt;<span class="variable">T</span>&gt;(<span class="variable">using</span> <span class="variable">generator</span>: <span class="keyword">inout</span> <span class="type">T</span>) <span class="keyword">where</span> <span class="type">T</span>: <span class="type">RandomNumberGenerator</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="attribute">mutating</span> <span class="keyword">func</span> <span class="function">shuffle</span>&lt;<span class="variable">T</span>&gt;(<span class="variable">using</span> <span class="variable">generator</span>: <span class="keyword">inout</span> <span class="type">T</span>) <span class="keyword">where</span> <span class="type">T</span>: <span class="type">RandomNumberGenerator</span> </code></pre>
+</div>
 </div>
 <div role="article" class="function" id="identifiedarray.shuffle()">
     <h3>
         <code>shuffle()</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="attribute">mutating</span> <span class="keyword">func</span> <span class="function">shuffle</span>()</code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="attribute">mutating</span> <span class="keyword">func</span> <span class="function">shuffle</span>() </code></pre>
+</div>
 </div>
 <div role="article" class="function" id="identifiedarray.reverse()">
     <h3>
         <code>reverse()</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="attribute">mutating</span> <span class="keyword">func</span> <span class="function">reverse</span>()</code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="attribute">mutating</span> <span class="keyword">func</span> <span class="function">reverse</span>() </code></pre>
+</div>
 </div>
     </section>
 
@@ -479,7 +534,7 @@ identifier.</p>
 
     <footer>
         <p>
-    Generated on <time datetime="2021-03-28T14:04:08+0000">March 28, 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.5</span>.
+    Generated on <time datetime="2021-04-27T08:27:57+0000">April 27, 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.6</span>.
 </p>
     </footer>
 </body>

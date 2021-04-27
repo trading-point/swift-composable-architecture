@@ -26,7 +26,7 @@
     <nav>
         <div class="wrapper">
             <h2>On This Page</h2>
-            <ol><li><a href="#relationships">Relationships</a><ul><li><a href="#relationships">Conforms To</a></li></ul></li><li><a href="#initializers">Initializers</a><ul><li class="initializer"><a href="#textstate.init(verbatim:)">init(verbatim:​)</a></li><li class="initializer"><a href="#textstate.init(_:)">init(_:​)</a></li><li class="initializer"><a href="#textstate.init(_:tablename:bundle:comment:)">init(_:​table​Name:​bundle:​comment:​)</a></li></ul></li><li><a href="#properties">Properties</a><ul><li class="variable"><a href="#textstate.body">body</a></li><li class="variable"><a href="#textstate.debugoutput">debug​Output</a></li></ul></li><li><a href="#methods">Methods</a><ul><li class="function"><a href="#textstate.+(lhs:rhs:)">+(lhs:​rhs:​)</a></li><li class="function"><a href="#textstate.baselineoffset(_:)">baseline​Offset(_:​)</a></li><li class="function"><a href="#textstate.bold()">bold()</a></li><li class="function"><a href="#textstate.font(_:)">font(_:​)</a></li><li class="function"><a href="#textstate.fontweight(_:)">font​Weight(_:​)</a></li><li class="function"><a href="#textstate.foregroundcolor(_:)">foreground​Color(_:​)</a></li><li class="function"><a href="#textstate.italic()">italic()</a></li><li class="function"><a href="#textstate.kerning(_:)">kerning(_:​)</a></li><li class="function"><a href="#textstate.strikethrough(_:color:)">strikethrough(_:​color:​)</a></li><li class="function"><a href="#textstate.tracking(_:)">tracking(_:​)</a></li><li class="function"><a href="#textstate.underline(_:color:)">underline(_:​color:​)</a></li></ul></li></ol>
+            <ol><li><a href="#relationships">Relationships</a><ul><li><a href="#relationships">Conforms To</a></li></ul></li><li><a href="#initializers">Initializers</a><ul><li class="initializer"><a href="#textstate.init(verbatim:)">init(verbatim:​)</a></li><li class="initializer"><a href="#textstate.init(_:)">init(_:​)</a></li><li class="initializer"><a href="#textstate.init(_:tablename:bundle:comment:)">init(_:​table​Name:​bundle:​comment:​)</a></li></ul></li><li><a href="#properties">Properties</a><ul><li class="variable"><a href="#textstate.body">body</a></li><li class="variable"><a href="#textstate.debugoutput">debug​Output</a></li></ul></li><li><a href="#methods">Methods</a><ul><li class="function"><a href="#textstate.baselineoffset(_:)">baseline​Offset(_:​)</a></li><li class="function"><a href="#textstate.bold()">bold()</a></li><li class="function"><a href="#textstate.font(_:)">font(_:​)</a></li><li class="function"><a href="#textstate.fontweight(_:)">font​Weight(_:​)</a></li><li class="function"><a href="#textstate.foregroundcolor(_:)">foreground​Color(_:​)</a></li><li class="function"><a href="#textstate.italic()">italic()</a></li><li class="function"><a href="#textstate.kerning(_:)">kerning(_:​)</a></li><li class="function"><a href="#textstate.strikethrough(_:color:)">strikethrough(_:​color:​)</a></li><li class="function"><a href="#textstate.tracking(_:)">tracking(_:​)</a></li><li class="function"><a href="#textstate.underline(_:color:)">underline(_:​color:​)</a></li></ul></li><li><a href="#operators">Operators</a><ul><li class="function"><a href="#textstate.+">+</a></li></ul></li></ol>
         </div>
     </nav>
 
@@ -37,7 +37,10 @@
     <code class="name">Text​State</code>
 </h1>
 
-<html><body><pre class="highlight"><code><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">iOS</span> <span class="number literal">13</span>, <span class="keyword">macOS</span> <span class="number literal">10.15</span>, <span class="keyword">macCatalyst</span> <span class="number literal">13</span>, <span class="keyword">tvOS</span> <span class="number literal">13</span>, <span class="keyword">watchOS</span> <span class="number literal">6</span>, *) <span class="keyword">public</span> <span class="keyword">struct</span> <span class="type">TextState</span>: <span class="type">Equatable</span>, <span class="type">Hashable</span></code></pre></body></html>
+<div class="declaration">
+<pre class="highlight"><code><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">iOS</span> <span class="number literal">13</span>, <span class="keyword">macOS</span> <span class="number literal">10.15</span>, <span class="keyword">macCatalyst</span> <span class="number literal">13</span>, <span class="keyword">tvOS</span> <span class="number literal">13</span>, <span class="keyword">watchOS</span> <span class="number literal">6</span>, *)
+  <span class="keyword">public</span> <span class="keyword">struct</span> <span class="type">TextState</span>: <span class="type">Equatable</span>, <span class="type">Hashable</span> </code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>An equatable description of SwiftUI <code>Text</code>. Useful for storing rich text in state for the
 purpose of rendering in a view hierarchy.</p>
@@ -61,20 +64,20 @@ held in state and asserted against.</p>
 <p>Your reducer can then assign a value to this state using an API similar to that of
 <code>SwiftUI.Text</code>.</p>
 
-<html><body><pre class="highlight"><code><span class="variable">state</span>.<span class="type">label</span> = <span class="variable">TextState</span>(<span class="string literal">"</span><span class="string literal">Hello, </span><span class="string literal">"</span>) + <span class="variable">TextState</span>(<span class="variable">name</span>).<span class="type">bold</span>() + <span class="variable">TextState</span>(<span class="string literal">"</span><span class="string literal">!</span><span class="string literal">"</span>)
+<html><body><pre class="highlight"><code><span class="variable">state</span>.<span class="variable">label</span> = <span class="variable">TextState</span>(<span class="string literal">"</span><span class="string literal">Hello, </span><span class="string literal">"</span>) + <span class="variable">TextState</span>(<span class="variable">name</span>).<span class="variable">bold</span>() + <span class="variable">TextState</span>(<span class="string literal">"</span><span class="string literal">!</span><span class="string literal">"</span>)
 </code></pre></body></html>
 <p>And your view store can render it directly:</p>
 
 <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">body</span>: <span class="keyword">some</span> <span class="type">View</span> {
-  <span class="variable">WithViewStore</span>(<span class="keyword">self</span>.<span class="type">store</span>) { <span class="variable">viewStore</span> <span class="keyword">in</span>
-    <span class="variable">viewStore</span>.<span class="type">label</span>
+  <span class="variable">WithViewStore</span>(<span class="keyword">self</span>.<span class="variable">store</span>) { <span class="variable">viewStore</span> <span class="keyword">in</span>
+    <span class="variable">viewStore</span>.<span class="variable">label</span>
   }
 }
 </code></pre></body></html>
 <p>Certain SwiftUI APIs, like alerts and action sheets, take <code>Text</code> values and, not views. To
 convert <code>TextState</code> to <code>SwiftUI.Text</code> for this purpose, you can use the <code>Text</code> initializer:</p>
 
-<html><body><pre class="highlight"><code><span class="variable">Alert</span>(<span class="variable">title</span>: <span class="type">Text</span>(<span class="variable">viewStore</span>.<span class="type">label</span>))
+<html><body><pre class="highlight"><code><span class="variable">Alert</span>(<span class="variable">title</span>: <span class="type">Text</span>(<span class="variable">viewStore</span>.<span class="variable">label</span>))
 </code></pre></body></html>
 <p>The Composable Architecture comes with a few convenience APIs for alerts and action sheets that
 wrap <code>TextState</code> under the hood. See <code>AlertState</code> and <code>ActionState</code> accordingly.</p>
@@ -82,8 +85,8 @@ wrap <code>TextState</code> under the hood. See <code>AlertState</code> and <cod
 <p>In the future, should <code>SwiftUI.Text</code> and <code>SwiftUI.LocalizedStringKey</code> reliably conform to
 <code>Equatable</code>, <code>TextState</code> may be deprecated.</p>
 
-<aside class="note">
-    <p><code>TextState</code> does not support <em>all</em> <code>LocalizedStringKey</code> permutations at this time, in particular, for example interpolated <code>SwiftUI.Image</code>s. <code>TextState</code> also uses reflection to determine <code>LocalizedStringKey</code> equatability, so look out for edge cases.</p>
+<aside class="Note">
+    <p><code>TextState</code> does not support <em>all</em> <code>LocalizedStringKey</code> permutations at this time (interpolated <code>SwiftUI.Image</code>s, for example. <code>TextState</code> also uses reflection to determine <code>LocalizedStringKey</code> equatability, so be mindful of edge cases.</p>
 
 </aside>
 </div>
@@ -95,47 +98,47 @@ wrap <code>TextState</code> under the hood. See <code>AlertState</code> and <cod
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Generated by graphviz version 2.40.1 (20161225.0304)
  -->
-<!-- Title: %3 Pages: 1 -->
-<svg width="1110pt" height="243pt"
- viewBox="0.00 0.00 1110.18 243.49" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<!-- Title: %51 Pages: 1 -->
+<svg width="1128pt" height="243pt"
+ viewBox="0.00 0.00 1128.23 243.49" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 239.49)">
-<title>%3</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-239.49 1106.1838,-239.49 1106.1838,4 -4,4"/>
+<title>%51</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-239.49 1124.2314,-239.49 1124.2314,4 -4,4"/>
 <!-- TextState -->
 <g id="node1" class="node structure current">
 <title>TextState</title>
 <g id="a_node1"><a xlink:href="/reactiveswift-composable-architecture/TextState" xlink:title="TextState">
-<path fill="none" stroke="#000000" stroke-width="3" d="M637.3581,-136.0408C637.3581,-136.0408 445.3581,-136.0408 445.3581,-136.0408 439.3581,-136.0408 433.3581,-130.0408 433.3581,-124.0408 433.3581,-124.0408 433.3581,-112.0408 433.3581,-112.0408 433.3581,-106.0408 439.3581,-100.0408 445.3581,-100.0408 445.3581,-100.0408 637.3581,-100.0408 637.3581,-100.0408 643.3581,-100.0408 649.3581,-106.0408 649.3581,-112.0408 649.3581,-112.0408 649.3581,-124.0408 649.3581,-124.0408 649.3581,-130.0408 643.3581,-136.0408 637.3581,-136.0408"/>
-<text text-anchor="middle" x="541.3581" y="-114.3408" font-family="Menlo" font-size="14.00" fill="#000000">TextState</text>
+<path fill="none" stroke="#000000" stroke-width="3" d="M654.5729,-136.0408C654.5729,-136.0408 462.5729,-136.0408 462.5729,-136.0408 456.5729,-136.0408 450.5729,-130.0408 450.5729,-124.0408 450.5729,-124.0408 450.5729,-112.0408 450.5729,-112.0408 450.5729,-106.0408 456.5729,-100.0408 462.5729,-100.0408 462.5729,-100.0408 654.5729,-100.0408 654.5729,-100.0408 660.5729,-100.0408 666.5729,-106.0408 666.5729,-112.0408 666.5729,-112.0408 666.5729,-124.0408 666.5729,-124.0408 666.5729,-130.0408 660.5729,-136.0408 654.5729,-136.0408"/>
+<text text-anchor="middle" x="558.5729" y="-114.3408" font-family="Menlo" font-size="14.00" fill="#000000">TextState</text>
 </a>
 </g>
 </g>
+<!-- Hashable -->
+<g id="node2" class="node unknown">
+<title>Hashable</title>
+<path fill="none" stroke="#000000" d="M1108.2314,-71.1618C1108.2314,-71.1618 916.2314,-71.1618 916.2314,-71.1618 910.2314,-71.1618 904.2314,-65.1618 904.2314,-59.1618 904.2314,-59.1618 904.2314,-47.1618 904.2314,-47.1618 904.2314,-41.1618 910.2314,-35.1618 916.2314,-35.1618 916.2314,-35.1618 1108.2314,-35.1618 1108.2314,-35.1618 1114.2314,-35.1618 1120.2314,-41.1618 1120.2314,-47.1618 1120.2314,-47.1618 1120.2314,-59.1618 1120.2314,-59.1618 1120.2314,-65.1618 1114.2314,-71.1618 1108.2314,-71.1618"/>
+<text text-anchor="middle" x="1012.2314" y="-49.4618" font-family="Menlo" font-size="14.00" fill="#000000">Hashable</text>
+</g>
+<!-- TextState&#45;&gt;Hashable -->
+<g id="edge4" class="edge conformsTo">
+<title>TextState&#45;&gt;Hashable</title>
+<path fill="none" stroke="#000000" d="M666.659,-102.5831C735.1018,-92.7949 823.6315,-80.134 893.9498,-70.0776"/>
+<polygon fill="#000000" stroke="#000000" points="894.7842,-73.4939 904.188,-68.6134 893.7931,-66.5644 894.7842,-73.4939"/>
+</g>
 <!-- CustomDebugOutputConvertible -->
-<g id="node2" class="node protocol">
+<g id="node3" class="node protocol">
 <title>CustomDebugOutputConvertible</title>
-<g id="a_node2"><a xlink:href="/reactiveswift-composable-architecture/CustomDebugOutputConvertible" xlink:title="CustomDebugOutputConvertible">
-<path fill="none" stroke="#000000" d="M1090.1838,-71.1618C1090.1838,-71.1618 865.1838,-71.1618 865.1838,-71.1618 859.1838,-71.1618 853.1838,-65.1618 853.1838,-59.1618 853.1838,-59.1618 853.1838,-47.1618 853.1838,-47.1618 853.1838,-41.1618 859.1838,-35.1618 865.1838,-35.1618 865.1838,-35.1618 1090.1838,-35.1618 1090.1838,-35.1618 1096.1838,-35.1618 1102.1838,-41.1618 1102.1838,-47.1618 1102.1838,-47.1618 1102.1838,-59.1618 1102.1838,-59.1618 1102.1838,-65.1618 1096.1838,-71.1618 1090.1838,-71.1618"/>
-<text text-anchor="middle" x="977.6838" y="-49.4618" font-family="Menlo" font-size="14.00" fill="#000000">CustomDebugOutputConvertible</text>
+<g id="a_node3"><a xlink:href="/reactiveswift-composable-architecture/CustomDebugOutputConvertible" xlink:title="CustomDebugOutputConvertible">
+<path fill="none" stroke="#000000" d="M377.6734,-36C377.6734,-36 152.6734,-36 152.6734,-36 146.6734,-36 140.6734,-30 140.6734,-24 140.6734,-24 140.6734,-12 140.6734,-12 140.6734,-6 146.6734,0 152.6734,0 152.6734,0 377.6734,0 377.6734,0 383.6734,0 389.6734,-6 389.6734,-12 389.6734,-12 389.6734,-24 389.6734,-24 389.6734,-30 383.6734,-36 377.6734,-36"/>
+<text text-anchor="middle" x="265.1734" y="-14.3" font-family="Menlo" font-size="14.00" fill="#000000">CustomDebugOutputConvertible</text>
 </a>
 </g>
 </g>
 <!-- TextState&#45;&gt;CustomDebugOutputConvertible -->
-<g id="edge3" class="edge conformsTo">
-<title>TextState&#45;&gt;CustomDebugOutputConvertible</title>
-<path fill="none" stroke="#000000" d="M649.4941,-101.9616C709.1444,-93.092 783.6603,-82.0119 846.6051,-72.6524"/>
-<polygon fill="#000000" stroke="#000000" points="847.2275,-76.0984 856.604,-71.1656 846.198,-69.1745 847.2275,-76.0984"/>
-</g>
-<!-- Equatable -->
-<g id="node3" class="node unknown">
-<title>Equatable</title>
-<path fill="none" stroke="#000000" d="M355.1683,-36C355.1683,-36 163.1683,-36 163.1683,-36 157.1683,-36 151.1683,-30 151.1683,-24 151.1683,-24 151.1683,-12 151.1683,-12 151.1683,-6 157.1683,0 163.1683,0 163.1683,0 355.1683,0 355.1683,0 361.1683,0 367.1683,-6 367.1683,-12 367.1683,-12 367.1683,-24 367.1683,-24 367.1683,-30 361.1683,-36 355.1683,-36"/>
-<text text-anchor="middle" x="259.1683" y="-14.3" font-family="Menlo" font-size="14.00" fill="#000000">Equatable</text>
-</g>
-<!-- TextState&#45;&gt;Equatable -->
 <g id="edge1" class="edge conformsTo">
-<title>TextState&#45;&gt;Equatable</title>
-<path fill="none" stroke="#000000" d="M490.5823,-100.04C442.5809,-83.0227 370.5192,-57.4757 319.5844,-39.4185"/>
-<polygon fill="#000000" stroke="#000000" points="320.6064,-36.0674 310.0117,-36.0248 318.2674,-42.6651 320.6064,-36.0674"/>
+<title>TextState&#45;&gt;CustomDebugOutputConvertible</title>
+<path fill="none" stroke="#000000" d="M505.7801,-100.04C455.7682,-82.9873 380.636,-57.3694 327.6594,-39.3059"/>
+<polygon fill="#000000" stroke="#000000" points="328.6309,-35.9394 318.0364,-36.0248 326.3718,-42.5648 328.6309,-35.9394"/>
 </g>
 <!-- View -->
 <g id="node4" class="node unknown">
@@ -144,22 +147,22 @@ wrap <code>TextState</code> under the hood. See <code>AlertState</code> and <cod
 <text text-anchor="middle" x="108" y="-180.0784" font-family="Menlo" font-size="14.00" fill="#000000">View</text>
 </g>
 <!-- TextState&#45;&gt;View -->
-<g id="edge2" class="edge conformsTo">
+<g id="edge3" class="edge conformsTo">
 <title>TextState&#45;&gt;View</title>
-<path fill="none" stroke="#000000" d="M433.1214,-134.4596C370.2979,-143.9895 291.0876,-156.0052 226.5807,-165.7905"/>
-<polygon fill="#000000" stroke="#000000" points="225.7207,-162.3808 216.3588,-167.3411 226.7706,-169.3017 225.7207,-162.3808"/>
+<path fill="none" stroke="#000000" d="M450.3629,-133.8284C382.737,-143.6949 295.6207,-156.405 226.1903,-166.5347"/>
+<polygon fill="#000000" stroke="#000000" points="225.4692,-163.1028 216.0793,-168.0099 226.4798,-170.0294 225.4692,-163.1028"/>
 </g>
-<!-- Hashable -->
+<!-- Equatable -->
 <g id="node5" class="node unknown">
-<title>Hashable</title>
-<path fill="none" stroke="#000000" d="M924.2222,-235.49C924.2222,-235.49 732.2222,-235.49 732.2222,-235.49 726.2222,-235.49 720.2222,-229.49 720.2222,-223.49 720.2222,-223.49 720.2222,-211.49 720.2222,-211.49 720.2222,-205.49 726.2222,-199.49 732.2222,-199.49 732.2222,-199.49 924.2222,-199.49 924.2222,-199.49 930.2222,-199.49 936.2222,-205.49 936.2222,-211.49 936.2222,-211.49 936.2222,-223.49 936.2222,-223.49 936.2222,-229.49 930.2222,-235.49 924.2222,-235.49"/>
-<text text-anchor="middle" x="828.2222" y="-213.79" font-family="Menlo" font-size="14.00" fill="#000000">Hashable</text>
+<title>Equatable</title>
+<path fill="none" stroke="#000000" d="M952.8325,-235.49C952.8325,-235.49 760.8325,-235.49 760.8325,-235.49 754.8325,-235.49 748.8325,-229.49 748.8325,-223.49 748.8325,-223.49 748.8325,-211.49 748.8325,-211.49 748.8325,-205.49 754.8325,-199.49 760.8325,-199.49 760.8325,-199.49 952.8325,-199.49 952.8325,-199.49 958.8325,-199.49 964.8325,-205.49 964.8325,-211.49 964.8325,-211.49 964.8325,-223.49 964.8325,-223.49 964.8325,-229.49 958.8325,-235.49 952.8325,-235.49"/>
+<text text-anchor="middle" x="856.8325" y="-213.79" font-family="Menlo" font-size="14.00" fill="#000000">Equatable</text>
 </g>
-<!-- TextState&#45;&gt;Hashable -->
-<g id="edge4" class="edge conformsTo">
-<title>TextState&#45;&gt;Hashable</title>
-<path fill="none" stroke="#000000" d="M593.307,-136.0503C641.9969,-152.93 714.8259,-178.1781 766.4673,-196.081"/>
-<polygon fill="#000000" stroke="#000000" points="765.581,-199.478 776.1758,-199.4467 767.8739,-192.8642 765.581,-199.478"/>
+<!-- TextState&#45;&gt;Equatable -->
+<g id="edge2" class="edge conformsTo">
+<title>TextState&#45;&gt;Equatable</title>
+<path fill="none" stroke="#000000" d="M612.5854,-136.0503C663.3148,-152.9651 739.2465,-178.2831 792.959,-196.1925"/>
+<polygon fill="#000000" stroke="#000000" points="792.1249,-199.6038 802.7186,-199.4467 794.3392,-192.9632 792.1249,-199.6038"/>
 </g>
 </g>
 </svg>
@@ -183,19 +186,31 @@ wrap <code>TextState</code> under the hood. See <code>AlertState</code> and <cod
     <h3>
         <code>init(verbatim:​)</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">init</span>(<span class="variable">verbatim</span> <span class="variable">content</span>: <span class="type">String</span>)</code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">init</span>(<span class="variable">verbatim</span> <span class="variable">content</span>: <span class="type">String</span>) </code></pre>
+</div>
 </div>
 <div role="article" class="initializer" id="textstate.init(_:)">
     <h3>
         <code>init(_:​)</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="attribute">@</span><span class="attribute">_disfavoredOverload</span> <span class="keyword">public</span> <span class="keyword">init</span>&lt;<span class="variable">S</span>&gt;(<span class="keyword">_</span> <span class="variable">content</span>: <span class="type">S</span>) <span class="keyword">where</span> <span class="type">S</span>: <span class="type">StringProtocol</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="attribute">@</span><span class="attribute">_disfavoredOverload</span>
+    <span class="keyword">public</span> <span class="keyword">init</span>&lt;<span class="variable">S</span>&gt;(<span class="keyword">_</span> <span class="variable">content</span>: <span class="type">S</span>) <span class="keyword">where</span> <span class="type">S</span>: <span class="type">StringProtocol</span> </code></pre>
+</div>
 </div>
 <div role="article" class="initializer" id="textstate.init(_:tablename:bundle:comment:)">
     <h3>
         <code>init(_:​table​Name:​bundle:​comment:​)</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">init</span>(<span class="keyword">_</span> <span class="variable">key</span>: <span class="type">LocalizedStringKey</span>, <span class="variable">tableName</span>: <span class="type">String</span>? = <span class="keyword">nil</span>, <span class="variable">bundle</span>: <span class="type">Bundle</span>? = <span class="keyword">nil</span>, <span class="variable">comment</span>: <span class="type">StaticString</span>? = <span class="keyword">nil</span>)</code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">init</span>(
+      <span class="keyword">_</span> <span class="variable">key</span>: <span class="type">LocalizedStringKey</span>,
+      <span class="variable">tableName</span>: <span class="type">String</span>? = <span class="keyword">nil</span>,
+      <span class="variable">bundle</span>: <span class="type">Bundle</span>? = <span class="keyword">nil</span>,
+      <span class="variable">comment</span>: <span class="type">StaticString</span>? = <span class="keyword">nil</span>
+    ) </code></pre>
+</div>
 </div>
     </section>
     <section id="properties">
@@ -205,83 +220,113 @@ wrap <code>TextState</code> under the hood. See <code>AlertState</code> and <cod
     <h3>
         <code>body</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">body</span>: <span class="keyword">some</span> <span class="type">View</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">var</span> <span class="variable">body</span>: <span class="keyword">some</span> <span class="type">View</span> </code></pre>
+</div>
 </div>
 <div role="article" class="variable" id="textstate.debugoutput">
     <h3>
         <code>debug​Output</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">debugOutput</span>: <span class="type">String</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">var</span> <span class="variable">debugOutput</span>: <span class="type">String</span> </code></pre>
+</div>
 </div>
     </section>
     <section id="methods">
         <h2>Methods</h2>
 
-        <div role="article" class="function" id="textstate.+(lhs:rhs:)">
-    <h3>
-        <code>+(lhs:​rhs:​)</code>
-    </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> +(<span class="variable">lhs</span>: <span class="keyword">Self</span>, <span class="variable">rhs</span>: <span class="keyword">Self</span>) -&gt; <span class="keyword">Self</span></code></pre></body></html>
-</div>
-<div role="article" class="function" id="textstate.baselineoffset(_:)">
+        <div role="article" class="function" id="textstate.baselineoffset(_:)">
     <h3>
         <code>baseline​Offset(_:​)</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">baselineOffset</span>(<span class="keyword">_</span> <span class="variable">baselineOffset</span>: <span class="type">CGFloat</span>) -&gt; <span class="keyword">Self</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">baselineOffset</span>(<span class="keyword">_</span> <span class="variable">baselineOffset</span>: <span class="type">CGFloat</span>) -&gt; <span class="keyword">Self</span> </code></pre>
+</div>
 </div>
 <div role="article" class="function" id="textstate.bold()">
     <h3>
         <code>bold()</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">bold</span>() -&gt; <span class="keyword">Self</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">bold</span>() -&gt; <span class="keyword">Self</span> </code></pre>
+</div>
 </div>
 <div role="article" class="function" id="textstate.font(_:)">
     <h3>
         <code>font(_:​)</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">font</span>(<span class="keyword">_</span> <span class="variable">font</span>: <span class="type">Font</span>?) -&gt; <span class="keyword">Self</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">font</span>(<span class="keyword">_</span> <span class="variable">font</span>: <span class="type">Font</span>?) -&gt; <span class="keyword">Self</span> </code></pre>
+</div>
 </div>
 <div role="article" class="function" id="textstate.fontweight(_:)">
     <h3>
         <code>font​Weight(_:​)</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">fontWeight</span>(<span class="keyword">_</span> <span class="variable">weight</span>: <span class="type">Font</span>.<span class="type">Weight</span>?) -&gt; <span class="keyword">Self</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">fontWeight</span>(<span class="keyword">_</span> <span class="variable">weight</span>: <span class="type">Font</span>.<span class="type">Weight</span>?) -&gt; <span class="keyword">Self</span> </code></pre>
+</div>
 </div>
 <div role="article" class="function" id="textstate.foregroundcolor(_:)">
     <h3>
         <code>foreground​Color(_:​)</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">foregroundColor</span>(<span class="keyword">_</span> <span class="variable">color</span>: <span class="type">Color</span>?) -&gt; <span class="keyword">Self</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">foregroundColor</span>(<span class="keyword">_</span> <span class="variable">color</span>: <span class="type">Color</span>?) -&gt; <span class="keyword">Self</span> </code></pre>
+</div>
 </div>
 <div role="article" class="function" id="textstate.italic()">
     <h3>
         <code>italic()</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">italic</span>() -&gt; <span class="keyword">Self</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">italic</span>() -&gt; <span class="keyword">Self</span> </code></pre>
+</div>
 </div>
 <div role="article" class="function" id="textstate.kerning(_:)">
     <h3>
         <code>kerning(_:​)</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">kerning</span>(<span class="keyword">_</span> <span class="variable">kerning</span>: <span class="type">CGFloat</span>) -&gt; <span class="keyword">Self</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">kerning</span>(<span class="keyword">_</span> <span class="variable">kerning</span>: <span class="type">CGFloat</span>) -&gt; <span class="keyword">Self</span> </code></pre>
+</div>
 </div>
 <div role="article" class="function" id="textstate.strikethrough(_:color:)">
     <h3>
         <code>strikethrough(_:​color:​)</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">strikethrough</span>(<span class="keyword">_</span> <span class="variable">active</span>: <span class="type">Bool</span> = <span class="keyword">true</span>, <span class="variable">color</span>: <span class="type">Color</span>? = <span class="keyword">nil</span>) -&gt; <span class="keyword">Self</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">strikethrough</span>(<span class="keyword">_</span> <span class="variable">active</span>: <span class="type">Bool</span> = <span class="keyword">true</span>, <span class="variable">color</span>: <span class="type">Color</span>? = <span class="keyword">nil</span>) -&gt; <span class="keyword">Self</span> </code></pre>
+</div>
 </div>
 <div role="article" class="function" id="textstate.tracking(_:)">
     <h3>
         <code>tracking(_:​)</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">tracking</span>(<span class="keyword">_</span> <span class="variable">tracking</span>: <span class="type">CGFloat</span>) -&gt; <span class="keyword">Self</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">tracking</span>(<span class="keyword">_</span> <span class="variable">tracking</span>: <span class="type">CGFloat</span>) -&gt; <span class="keyword">Self</span> </code></pre>
+</div>
 </div>
 <div role="article" class="function" id="textstate.underline(_:color:)">
     <h3>
         <code>underline(_:​color:​)</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">underline</span>(<span class="keyword">_</span> <span class="variable">active</span>: <span class="type">Bool</span> = <span class="keyword">true</span>, <span class="variable">color</span>: <span class="type">Color</span>? = <span class="keyword">nil</span>) -&gt; <span class="keyword">Self</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">underline</span>(<span class="keyword">_</span> <span class="variable">active</span>: <span class="type">Bool</span> = <span class="keyword">true</span>, <span class="variable">color</span>: <span class="type">Color</span>? = <span class="keyword">nil</span>) -&gt; <span class="keyword">Self</span> </code></pre>
+</div>
+</div>
+    </section>
+    <section id="operators">
+        <h2>Operators</h2>
+
+        <div role="article" class="function" id="textstate.+">
+    <h3>
+        <code>+</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> + (<span class="variable">lhs</span>: <span class="keyword">Self</span>, <span class="variable">rhs</span>: <span class="keyword">Self</span>) -&gt; <span class="keyword">Self</span> </code></pre>
+</div>
 </div>
     </section>
 
@@ -292,7 +337,7 @@ wrap <code>TextState</code> under the hood. See <code>AlertState</code> and <cod
 
     <footer>
         <p>
-    Generated on <time datetime="2021-03-28T14:04:08+0000">March 28, 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.5</span>.
+    Generated on <time datetime="2021-04-27T08:27:56+0000">April 27, 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.6</span>.
 </p>
     </footer>
 </body>

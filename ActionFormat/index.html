@@ -37,7 +37,9 @@
     <code class="name">Action​Format</code>
 </h1>
 
-<html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">enum</span> <span class="type">ActionFormat</span></code></pre></body></html>
+<div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">enum</span> <span class="type">ActionFormat</span> </code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Determines how the string description of an action should be printed when using the <code>.debug()</code>
 higher-order reducer.</p>
@@ -51,13 +53,15 @@ higher-order reducer.</p>
     <h3>
         <code>labels​Only</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">case</span> <span class="variable">labelsOnly</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">case</span> <span class="variable">labelsOnly</span></code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Prints the action in a single line by only specifying the labels of the associated values:</p>
 
 </div>
 <div class="discussion">
-    <html><body><pre class="highlight"><code><span class="variable">Action</span>.<span class="type">screenA</span>(.<span class="variable">row</span>(<span class="variable">index</span>:, <span class="variable">action</span>: .<span class="variable">textChanged</span>(<span class="variable">query</span>:)))
+    <html><body><pre class="highlight"><code><span class="variable">Action</span>.<span class="variable">screenA</span>(.<span class="variable">row</span>(<span class="variable">index</span>:, <span class="variable">action</span>: .<span class="variable">textChanged</span>(<span class="variable">query</span>:)))
 </code></pre></body></html>
 </div>
 </div>
@@ -65,17 +69,19 @@ higher-order reducer.</p>
     <h3>
         <code>pretty​Print</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">case</span> <span class="variable">prettyPrint</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">case</span> <span class="variable">prettyPrint</span></code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Prints the action in a multiline, pretty-printed format, including all the labels of
 any associated values, as well as the data held in the associated values:</p>
 
 </div>
 <div class="discussion">
-    <html><body><pre class="highlight"><code><span class="variable">Action</span>.<span class="type">screenA</span>(
-  <span class="variable">ScreenA</span>.<span class="type">row</span>(
+    <html><body><pre class="highlight"><code><span class="variable">Action</span>.<span class="variable">screenA</span>(
+  <span class="variable">ScreenA</span>.<span class="variable">row</span>(
     <span class="variable">index</span>: <span class="number literal">1</span>,
-    <span class="variable">action</span>: <span class="type">RowAction</span>.<span class="type">textChanged</span>(
+    <span class="variable">action</span>: <span class="type">RowAction</span>.<span class="variable">textChanged</span>(
       <span class="variable">query</span>: <span class="string literal">"</span><span class="string literal">Hi</span><span class="string literal">"</span>
     )
   )
@@ -92,7 +98,7 @@ any associated values, as well as the data held in the associated values:</p>
 
     <footer>
         <p>
-    Generated on <time datetime="2021-03-28T14:04:08+0000">March 28, 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.5</span>.
+    Generated on <time datetime="2021-04-27T08:27:57+0000">April 27, 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.6</span>.
 </p>
     </footer>
 </body>
