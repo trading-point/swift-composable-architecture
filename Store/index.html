@@ -450,7 +450,8 @@ when non-view state changes), and is incapable of sending any actions but view a
         <code>if​Let(then:​else:​)</code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">ifLet</span>&lt;<span class="variable">Wrapped</span>&gt;(
+<pre class="highlight"><code><span class="attribute">@</span><span class="attribute">discardableResult</span>
+  <span class="keyword">public</span> <span class="keyword">func</span> <span class="function">ifLet</span>&lt;<span class="variable">Wrapped</span>&gt;(
     <span class="variable">then</span> <span class="variable">unwrap</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="type">Store</span>&lt;<span class="type">Wrapped</span>, <span class="type">Action</span>&gt;) -&gt; <span class="type">Void</span>,
     <span class="variable">else</span>: <span class="attribute">@</span><span class="attribute">escaping</span> () -&gt; <span class="type">Void</span> = {}
   ) -&gt; <span class="type">Disposable</span> <span class="keyword">where</span> <span class="type">State</span> == <span class="type">Wrapped</span>? </code></pre>
@@ -530,7 +531,7 @@ to navigate to can be held as an optional value in the parent, and when that val
 
     <footer>
         <p>
-    Generated on <time datetime="2021-04-27T08:27:56+0000">April 27, 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.6</span>.
+    Generated on <time datetime="2021-04-27T09:43:55+0000">April 27, 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.6</span>.
 </p>
     </footer>
 </body>
